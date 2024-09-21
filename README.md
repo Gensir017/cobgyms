@@ -90,7 +90,7 @@ Any support is appreciated, I have a [Ko-fi](https://ko-fi.com/gensir) where you
   <em>Woodland themed Gym</em>
 </div><br><br>
 
-![https://i.imgur.com/I7hzpsk.png](https://i.imgur.com/I7hzpsk.png)
+![https://i.imgur.com/jUjZLrR.png](https://i.imgur.com/jUjZLrR.png)
 <div align="center">
   <em>Volcanic themed Gym</em>
 </div><br><br>
