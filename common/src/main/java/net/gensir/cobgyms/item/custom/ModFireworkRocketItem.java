@@ -2,11 +2,8 @@ package net.gensir.cobgyms.item.custom;
 
 import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtInt;
 import net.minecraft.nbt.NbtList;
-import net.minecraft.util.DyeColor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ModFireworkRocketItem {

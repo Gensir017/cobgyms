@@ -11,7 +11,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.architectury.event.events.common.CommandRegistrationEvent;
-import net.gensir.cobgyms.CobGyms;
 import net.gensir.cobgyms.cache.Cache;
 import net.gensir.cobgyms.gym.lootTable.GymLootTable;
 import net.gensir.cobgyms.item.custom.ModFireworkRocketItem;

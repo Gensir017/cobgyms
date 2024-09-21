@@ -72,12 +72,30 @@ Beating a Gym yields __rewards that scale based on the Gym Pokémon level chosen
 - Optional Datapacks that modifiy the recipes of Poké Caches to use Poké Shard Blocks instead of shards, meaning they would be more expensive and harder to get.
 
 ---
+### Credits
+- I cannot thank __Selfdot__ enough for not only creating [Cobblemon Trainers](https://modrinth.com/mod/cobblemontrainers) but for extensively helping me with my thousands of questions. This mod would not have been possible without him.
+- Of course [Cobblemon](https://modrinth.com/mod/cobblemon) and the team behind it, again this wouldn't have been possible without them.
+
+---
 ### Support
 _Discord link coming soon..._
 
 ---
 ### Donate
-_Donate link coming soon..._
+Any support is appreciated, I have a [Ko-fi](https://ko-fi.com/gensir) where you can donate if you wish.
 
 ---
-### Credits
+![https://i.imgur.com/5nFpREF.png](https://i.imgur.com/5nFpREF.png)
+<div align="center">
+  <em>Woodland themed Gym</em>
+</div><br><br>
+
+![https://i.imgur.com/I7hzpsk.png](https://i.imgur.com/I7hzpsk.png)
+<div align="center">
+  <em>Volcanic themed Gym</em>
+</div><br><br>
+
+![https://i.imgur.com/HD9AOK4.png](https://i.imgur.com/HD9AOK4.png)
+<div align="center">
+  <em>Aquatic themed Gym</em>
+</div><br><br>
