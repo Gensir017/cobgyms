@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "cobgyms",
+  "version": "${mod_version}",
+  "name": "CobGyms",
+  "description": "Unofficial implementation of Gyms for Cobblemon.",
+  "authors": [
+    "Gensir"
+  ],
+  "contact": {
+  },
+  "license": "${license}",
+  "icon": "assets/cobgyms/icon_cobgyms.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.gensir.cobgyms.fabric.CobGymsFabric"
+    ],
+    "client": [
+      "net.gensir.cobgyms.fabric.client.CobGymsFabricClient"
+    ]
+  },
+  "mixins": [
+    "cobgyms.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "architectury": ">=${architectury_version}",
+    "cobblemon": ">=${cobblemon_min_version}",
+    "cobblemontrainers": ">=${cobblemon_trainers_min_version}"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

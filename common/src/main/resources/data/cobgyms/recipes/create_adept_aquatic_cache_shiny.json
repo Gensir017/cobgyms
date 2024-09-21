@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:adept_shard"
+    },
+    "X": {
+      "item": "cobgyms:adept_aquatic_cache"
+    }
+  },
+  "result": {
+    "item": "cobgyms:adept_aquatic_cache_shiny"
+  }
+}

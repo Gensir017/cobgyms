@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cobgyms:legendary_shard_block"
+    }
+  ],
+  "result": {
+    "item": "cobgyms:legendary_shard",
+    "count": 4
+  }
+}

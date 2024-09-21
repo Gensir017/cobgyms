@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:adept_shard"
+    }
+  },
+  "result": {
+    "item": "cobgyms:adept_shard_block"
+  }
+}

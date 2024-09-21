@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "S S",
+    "ICI"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:adept_shard"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "cobgyms:empty_adept_cache"
+  }
+}

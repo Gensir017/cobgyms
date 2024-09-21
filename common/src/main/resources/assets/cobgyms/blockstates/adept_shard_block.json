@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cobgyms:block/adept_shard_block"
+    }
+  }
+}

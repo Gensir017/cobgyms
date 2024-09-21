@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cobgyms:adept_fragments"
+    },
+    {
+      "item": "cobgyms:adept_fragments"
+    },
+    {
+      "item": "cobgyms:adept_fragments"
+    },
+    {
+      "item": "cobgyms:adept_fragments"
+    }
+  ],
+  "result": {
+    "item": "cobgyms:adept_shard"
+  }
+}

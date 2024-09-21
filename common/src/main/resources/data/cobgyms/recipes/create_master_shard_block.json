@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:master_shard"
+    }
+  },
+  "result": {
+    "item": "cobgyms:master_shard_block"
+  }
+}

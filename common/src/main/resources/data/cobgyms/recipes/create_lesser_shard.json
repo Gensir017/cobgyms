@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cobgyms:lesser_fragments"
+    },
+    {
+      "item": "cobgyms:lesser_fragments"
+    },
+    {
+      "item": "cobgyms:lesser_fragments"
+    },
+    {
+      "item": "cobgyms:lesser_fragments"
+    }
+  ],
+  "result": {
+    "item": "cobgyms:lesser_shard"
+  }
+}

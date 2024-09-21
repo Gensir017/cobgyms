@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:lesser_shard"
+    }
+  },
+  "result": {
+    "item": "cobgyms:lesser_shard_block"
+  }
+}

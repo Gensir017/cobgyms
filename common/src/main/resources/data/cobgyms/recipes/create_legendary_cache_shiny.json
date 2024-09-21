@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:legendary_shard"
+    },
+    "X": {
+      "item": "cobgyms:legendary_cache"
+    }
+  },
+  "result": {
+    "item": "cobgyms:legendary_cache_shiny"
+  }
+}

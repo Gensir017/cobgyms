@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:lesser_shard"
+    },
+    "X": {
+      "item": "cobgyms:lesser_woodland_cache"
+    }
+  },
+  "result": {
+    "item": "cobgyms:lesser_woodland_cache_shiny"
+  }
+}

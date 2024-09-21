@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SXS",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:master_shard"
+    },   
+    "X": {
+      "item": "cobgyms:master_volcanic_cache"
+    }
+  },
+  "result": {
+    "item": "cobgyms:master_volcanic_cache_shiny"
+  }
+}

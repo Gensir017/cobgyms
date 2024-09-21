@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cobgyms:legendary_shard"
+    }
+  ],
+  "result": {
+    "item": "cobgyms:master_fragments",
+    "count": 5
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "cobgyms:ancient_relic",
+    "cobgyms:deepslate_ancient_relic",
+    "cobgyms:nether_ancient_relic",
+    "cobgyms:end_ancient_relic"
+  ]
+}

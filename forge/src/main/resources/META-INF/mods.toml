@@ -1,0 +1,49 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "${license}"
+
+[[mods]]
+modId = "cobgyms"
+version = "${mod_version}"
+displayName = "CobGyms"
+authors = "Gensir"
+description = '''
+Unofficial implementation of Gyms for Cobblemon.
+'''
+logoFile = "icon_cobgyms.png"
+
+[[dependencies.cobgyms]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cobgyms]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[${minecraft_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cobgyms]]
+modId = "architectury"
+mandatory = true
+versionRange = "[${architectury_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.cobgyms]]
+modId = "cobblemon"
+mandatory = true
+versionRange = "[${cobblemon_min_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.cobgyms]]
+modId = "cobblemontrainers"
+mandatory = true
+versionRange = "[${cobblemon_trainers_min_version},)"
+ordering = "NONE"
+side = "BOTH"

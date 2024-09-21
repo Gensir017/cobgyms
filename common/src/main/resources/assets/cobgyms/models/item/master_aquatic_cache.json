@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cobgyms:item/master_aquatic_cache"
+  }
+}

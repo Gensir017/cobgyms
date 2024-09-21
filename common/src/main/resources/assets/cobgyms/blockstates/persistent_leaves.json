@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cobgyms:block/persistent_leaves"
+    }
+  }
+}

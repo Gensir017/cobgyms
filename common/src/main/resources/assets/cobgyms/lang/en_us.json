@@ -1,0 +1,97 @@
+{
+  "cobgyms.lang.item_group": "CobGyms",
+
+  "cobgyms.lang.lesser": "§cLesser§r",
+  "cobgyms.lang.adept": "§9Adept§r",
+  "cobgyms.lang.master": "§dMaster§r",
+  "cobgyms.lang.legendary": "§6Legendary§r",
+
+  "cobgyms.lang.woodland": "§2Woodland§r",
+  "cobgyms.lang.volcanic": "§4Volcanic§r",
+  "cobgyms.lang.aquatic": "§bAquatic§r",
+
+  "cobgyms.lang.rarity.lesser": "common",
+  "cobgyms.lang.rarity.adept": "uncommon",
+  "cobgyms.lang.rarity.master": "rare",
+
+  "cobgyms.lang.poke_shard": "%s Poké Shard",
+  "tooltip.cobgyms.poke_shard.tooltip": "An ingredient used to craft %s Poké Caches.",
+
+  "cobgyms.lang.poke_fragments": "%s Poké Shard Fragments",
+  "tooltip.cobgyms.poke_fragments.tooltip": "Combine four of these to make a %s Poké Shard.",
+
+  "cobgyms.lang.poke_cache": "%s %s Poké Cache",
+  "cobgyms.lang.poke_cache_shiny": "Shiny %s %s Poké Cache",
+  "tooltip.cobgyms.poke_cache.tooltip": "Gives a random %s %s themed Pokémon.",
+  "tooltip.cobgyms.shiny_cache.tooltip": "§7Increased chance of a Shiny Pokémon",
+
+  "cobgyms.lang.poke_cache_typeless": "%s Poké Cache",
+  "cobgyms.lang.poke_cache_typeless_shiny": "Shiny %s Poké Cache",
+  "tooltip.cobgyms.poke_cache_typeless.tooltip": "Gives a random %s Pokémon.",
+
+  "cobgyms.lang.empty_poke_cache": "Empty %s Poké Cache",
+
+  "cobgyms.lang.poke_cache_received": "You Received a §b%s§r from the Poke Caché!",
+  "cobgyms.lang.poke_cache_received_shiny": "You Received a §dShiny§r §b%s§r from the Poke Caché!",
+
+  "item.cobgyms.gym_key": "Poké Gym Key",
+  "tooltip.cobgyms.gym_key.tooltip": "Right-click with this to start a Gym Battle.",
+
+  "cobgyms.lang.poke_shard_block": "%s Poké Shard Block",
+
+  "block.cobgyms.ancient_relic": "Ancient Relic",
+  "block.cobgyms.deepslate_ancient_relic": "Deepslate Ancient Relic",
+  "block.cobgyms.nether_ancient_relic": "Nether Ancient Relic",
+  "block.cobgyms.end_ancient_relic": "End Stone Ancient Relic",
+
+  "block.cobgyms.warped_blackstone": "Warped Blackstone",
+
+  "block.cobgyms.persistent_leaves": "Persistent Leaves",
+  "block.cobgyms.persistent_leaves_shaded": "Shaded Persistent Leaves",
+
+  "block.cobgyms.gym_exit": "Gym Exit",
+
+  "item.cobgyms.safe_lava_bucket": "Safe Lava Bucket",
+  "block.cobgyms.safe_magma": "Safe Magma",
+
+  "cobgyms.lang.command.cache_chance": "%s : %s chance",
+  "cobgyms.lang.command.non_player_command": "This command is not supposed to be used by a player.",
+
+  "cobgyms.lang.command.which_cache.not_found": "\"%s\" not found in any cache loot tables.",
+  "cobgyms.lang.command.which_cache.base_evolution_found": "Base Evolution \"%s\" found in the following caches:",
+  "cobgyms.lang.command.which_cache.found": "\"%s\" found in the following caches:",
+  "cobgyms.lang.command.which_cache.invalid_pokemon": "Not a valid Cobblemon Pokemon.",
+
+  "cobgyms.lang.command.list_cache.invalid_cache": "Not a valid CobGyms Cache.",
+
+  "cobgyms.lang.command.whiteout": "You have whited out.",
+
+  "cobgyms.lang.message.no_response": "No response from server please try again.",
+  "cobgyms.lang.message.dropped_key": "%s Dropped a §bPoké Gym Key§r",
+  "cobgyms.lang.message.leaving_gym": "Leaving Gym in 5 seconds...",
+  "cobgyms.lang.message.cannot_inside_gym": "This item cannot be used from inside a Gym.",
+
+  "cobgyms.lang.npc.name.gym_leader": "Gym Leader",
+  "cobgyms.lang.npc.name.gym_trainer": "Gym Trainer",
+  "cobgyms.lang.npc.no_pokemon": "Trainer %s has no Pokémon",
+
+  "cobgyms.lang.gym_exit.message": "Right-Click to Leave",
+
+  "cobgyms.lang.menu.yes": "Yes",
+  "cobgyms.lang.menu.no": "No",
+  "cobgyms.lang.menu.cancel": "Cancel",
+
+  "cobgyms.lang.menu.leave.confirmation": "Are you sure you want to leave the Gym?",
+  "cobgyms.lang.menu.leave.title": "Leave the Gym?",
+
+  "cobgyms.lang.menu.start.title": "Start Gym Battle",
+  "cobgyms.lang.menu.start.level": "Gym Pokemon Level",
+  "cobgyms.lang.menu.start.rewards": "Higher levels are more likely to give better rewards",
+  "cobgyms.lang.menu.start.level_min": "Gym Pokemon Level must be at least 5",
+
+  "cobgyms.lang.gym.first_time.part_one": "- Welcome to your first Gym.",
+  "cobgyms.lang.gym.first_time.part_two": "- Beat all the trainers and the leader to be rewarded.",
+  "cobgyms.lang.gym.first_time.part_three": "- If your pokemon all faint or you forfeit a battle then you will whiteout.",
+  "cobgyms.lang.gym.first_time.part_four": "- You can leave at any time with the Gym Exit block near the entrance.",
+  "cobgyms.lang.gym.first_time.part_five": "- You cannot break or place blocks except for torches."
+}

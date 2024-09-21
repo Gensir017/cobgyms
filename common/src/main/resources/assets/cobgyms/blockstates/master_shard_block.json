@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "cobgyms:block/master_shard_block"
+    }
+  }
+}

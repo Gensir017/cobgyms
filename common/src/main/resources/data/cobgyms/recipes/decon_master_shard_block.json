@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cobgyms:master_shard_block"
+    }
+  ],
+  "result": {
+    "item": "cobgyms:master_shard",
+    "count": 4
+  }
+}

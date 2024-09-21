@@ -1,0 +1,92 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+architectury {
+    platformSetupLoomIde()
+    forge()
+}
+
+loom {
+    forge {
+        mixinConfig "cobgyms.mixins.json"
+    }
+}
+
+configurations {
+    common
+    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentForge.extendsFrom common
+}
+
+repositories {
+    maven { url = 'https://thedarkcolour.github.io/KotlinForForge/' }
+}
+
+dependencies {
+    forge "net.minecraftforge:forge:$forge_version"
+    implementation "thedarkcolour:kotlinforforge:$kff_version"
+    modApi "dev.architectury:architectury-forge:$architectury_version"
+
+    modImplementation "com.cobblemon:forge:$cobblemon_version"
+
+    modImplementation "com.selfdot:SelfdotModLibs-forge:$selfdot_modlibs_version"
+    modImplementation "curse.maven:cobblemontrainers-959503:$cobblemon_trainers_forge_version"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+}
+
+processResources {
+    from project(":common").sourceSets.main.resources
+
+    filesMatching("META-INF/mods.toml") {
+        expand project.properties
+    }
+}
+
+shadowJar {
+    exclude "fabric.mod.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier.set("dev-shadow")
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier.set("forge")
+    archiveFileName.set("cobgyms-forge-${mod_version}+${minecraft_version}.jar")
+}
+
+jar {
+    archiveClassifier.set("dev")
+}
+
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+publishing {
+    publications {
+        mavenForge(MavenPublication) {
+            artifactId = rootProject.archives_base_name + "-" + project.name
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        // Add repositories to publish to here.
+    }
+}

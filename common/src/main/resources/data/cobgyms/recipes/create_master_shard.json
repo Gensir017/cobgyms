@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cobgyms:master_fragments"
+    },
+    {
+      "item": "cobgyms:master_fragments"
+    },
+    {
+      "item": "cobgyms:master_fragments"
+    },
+    {
+      "item": "cobgyms:master_fragments"
+    }
+  ],
+  "result": {
+    "item": "cobgyms:master_shard"
+  }
+}

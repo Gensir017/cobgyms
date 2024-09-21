@@ -1,0 +1,30 @@
+{
+  "type": "cobgyms:cobgyms_dim",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "cobgyms:cobgyms_biome",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "block": "minecraft:air",
+          "height": 71
+        },
+        {
+          "block": "minecraft:dirt",
+          "height": 1
+        },
+        {
+          "block": "minecraft:grass_block",
+          "height": 1
+        }
+      ],
+      "structure_overrides": []
+    }
+  }
+}
+
+
+
+

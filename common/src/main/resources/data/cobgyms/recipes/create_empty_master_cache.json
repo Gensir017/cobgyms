@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "S S",
+    "ICI"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:master_shard"
+    },
+    "I": {
+      "item": "minecraft:diamond"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "cobgyms:empty_master_cache"
+  }
+}

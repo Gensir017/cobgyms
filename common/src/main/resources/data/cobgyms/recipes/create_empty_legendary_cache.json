@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "S S",
+    "ICI"
+  ],
+  "key": {
+    "S": {
+      "item": "cobgyms:legendary_shard"
+    },
+    "I": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "cobgyms:empty_legendary_cache"
+  }
+}
