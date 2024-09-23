@@ -60,7 +60,7 @@
   "cobgyms.lang.command.which_cache.not_found": "\"%s\" not found in any cache loot tables.",
   "cobgyms.lang.command.which_cache.base_evolution_found": "Base Evolution \"%s\" found in the following caches:",
   "cobgyms.lang.command.which_cache.found": "\"%s\" found in the following caches:",
-  "cobgyms.lang.command.which_cache.invalid_pokemon": "Not a valid Cobblemon Pokemon.",
+  "cobgyms.lang.command.which_cache.invalid_pokemon": "Not a valid Cobblemon Pokémon.",
 
   "cobgyms.lang.command.list_cache.invalid_cache": "Not a valid CobGyms Cache.",
 
@@ -85,13 +85,13 @@
   "cobgyms.lang.menu.leave.title": "Leave the Gym?",
 
   "cobgyms.lang.menu.start.title": "Start Gym Battle",
-  "cobgyms.lang.menu.start.level": "Gym Pokemon Level",
+  "cobgyms.lang.menu.start.level": "Gym Pokémon Level",
   "cobgyms.lang.menu.start.rewards": "Higher levels are more likely to give better rewards",
-  "cobgyms.lang.menu.start.level_min": "Gym Pokemon Level must be at least 5",
+  "cobgyms.lang.menu.start.level_min": "Gym Pokémon Level must be at least 5",
 
   "cobgyms.lang.gym.first_time.part_one": "- Welcome to your first Gym.",
   "cobgyms.lang.gym.first_time.part_two": "- Beat all the trainers and the leader to be rewarded.",
-  "cobgyms.lang.gym.first_time.part_three": "- If your pokemon all faint or you forfeit a battle then you will whiteout.",
+  "cobgyms.lang.gym.first_time.part_three": "- If your Pokémon all faint or you forfeit a battle then you will whiteout.",
   "cobgyms.lang.gym.first_time.part_four": "- You can leave at any time with the Gym Exit block near the entrance.",
   "cobgyms.lang.gym.first_time.part_five": "- You cannot break or place blocks except for torches."
 }

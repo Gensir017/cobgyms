@@ -77,8 +77,8 @@ Beating a Gym yields __rewards that scale based on the Gym Pokémon level chosen
 - Of course [Cobblemon](https://modrinth.com/mod/cobblemon) and the team behind it, again this wouldn't have been possible without them.
 
 ---
-### Support
-_Discord link coming soon..._
+### Having Issues?
+You can find me in the [Official Cobblemon Discord](https://discord.gg/cobblemon) where I have a made a [Support Thread](https://discord.com/channels/934267676354834442/1287715521050972191). Let me know here if you have any issues or feedback.
 
 ---
 ### Donate
