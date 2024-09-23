@@ -73,7 +73,7 @@ Beating a Gym yields __rewards that scale based on the Gym Pokémon level chosen
 
 ---
 ### Credits
-- I cannot thank __Selfdot__ enough for not only creating [Cobblemon Trainers](https://modrinth.com/mod/cobblemontrainers) but for extensively helping me with my thousands of questions. This mod would not have been possible without him.
+- I cannot thank __Selfdot__ enough for not only creating [Cobblemon Trainers](https://modrinth.com/mod/cobblemontrainers) but also for helping me extensively when trying to use his mod API. CobGyms would not have been possible without him.
 - Of course [Cobblemon](https://modrinth.com/mod/cobblemon) and the team behind it, again this wouldn't have been possible without them.
 
 ---
