@@ -9,7 +9,7 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
-import static net.gensir.cobgyms.network.PacketHandler.LEAVE_GYM_PACKET_ID;
+import static net.gensir.cobgyms.network.ServerPacketHandler.LEAVE_GYM_PACKET_ID;
 
 public class LeaveGymScreen extends Screen {
 

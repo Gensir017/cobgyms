@@ -14,6 +14,8 @@ public class ModBlockEntityRegistry {
 
     public static final RegistrySupplier<BlockEntityType<GymExitBlockEntity>> GYM_EXIT_ENTITY = BLOCK_ENTITY_TYPES.register(new Identifier(MOD_ID,"gym_exit_be"), GymExitBlockEntity.TYPE);
 
+//    public static final RegistrySupplier<BlockEntityType<GymEntranceBlockEntity>> GYM_ENTRANCE_ENTITY = BLOCK_ENTITY_TYPES.register(new Identifier(MOD_ID,"gym_entrance_be"), GymEntranceBlockEntity.TYPE);
+
     public static void initialize() {
         BLOCK_ENTITY_TYPES.register();
     }

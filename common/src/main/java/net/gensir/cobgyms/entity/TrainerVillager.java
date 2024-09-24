@@ -1,14 +1,21 @@
 package net.gensir.cobgyms.entity;
 
+import com.cobblemon.mod.common.Cobblemon;
+import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
+import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.google.common.base.Suppliers;
+import com.selfdot.cobblemontrainers.CobblemonTrainers;
 import com.selfdot.cobblemontrainers.trainer.Trainer;
 import com.selfdot.cobblemontrainers.util.PokemonUtility;
+import net.gensir.cobgyms.CobGyms;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -46,18 +53,46 @@ public class TrainerVillager extends VillagerEntity {
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        if (!this.entityWorld.isClient) {
+        if (player instanceof ServerPlayerEntity serverPlayer && this.entityWorld instanceof ServerWorld serverWorld){
             if (this.trainer != null){
+
+                // Check if trainer team empty
                 if (this.trainer.getBattleTeam().isEmpty()) {
-                    player.sendMessage(Text.translatable("cobgyms.lang.npc.no_pokemon", trainer.getName()));
+                    serverPlayer.sendMessage(Text.translatable("cobgyms.lang.npc.no_pokemon", trainer.getName()));
+                    return ActionResult.FAIL;
                 }
-                PokemonUtility.startTrainerBattle(
-                        (ServerPlayerEntity) player, trainer,
-                        this
-                );
+
+                // Check if player team has at least one alive pokemon
+                PlayerPartyStore playerTeam = Cobblemon.INSTANCE.getStorage().getParty(serverPlayer);
+                boolean allDead = true;
+                boolean hasPokemon = false;
+
+                for(Pokemon pokemon : playerTeam){
+                    hasPokemon = true;
+                    if (!pokemon.isFainted()) {
+                        allDead = false;
+                        break;
+                    }
+                }
+                if(allDead && hasPokemon){
+                    serverPlayer.sendMessage(Text.of("At least one of your Pokémon must be alive."));
+                    return ActionResult.FAIL;
+                }
+
+                serverWorld.getServer().execute(() -> {
+                    // If everything is fine then continue with battle
+                    PokemonUtility.startTrainerBattle(
+                            serverPlayer, trainer,
+                            this
+                    );
+                });
+
+                return ActionResult.SUCCESS;
+            } else {
+                CobGyms.LOGGER.info("DEBUG: PLAYER RIGHT-CLICKED BUT TRAINER IS NULL");
             }
 
-            return ActionResult.SUCCESS;
+            return ActionResult.FAIL;
         }
 
         return super.interactMob(player, hand);
@@ -79,4 +114,21 @@ public class TrainerVillager extends VillagerEntity {
     }
 
 
+    @Override
+    public NbtCompound writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        if (this.trainer != null) {
+            nbt.putString("TrainerUUID", this.trainer.getName());
+        }
+        return nbt;
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        if (nbt.contains("TrainerUUID")) {
+            String trainerUUID = nbt.getString("TrainerUUID");
+            this.trainer = CobblemonTrainers.INSTANCE.getTrainerRegistry().getTrainer(trainerUUID);
+        }
+    }
 }

@@ -14,7 +14,7 @@ import dev.architectury.event.events.common.CommandRegistrationEvent;
 import net.gensir.cobgyms.cache.Cache;
 import net.gensir.cobgyms.gym.lootTable.GymLootTable;
 import net.gensir.cobgyms.item.custom.ModFireworkRocketItem;
-import net.gensir.cobgyms.network.PacketHandler;
+import net.gensir.cobgyms.network.LeaveGymPacket;
 import net.gensir.cobgyms.registry.ModBlockRegistry;
 import net.gensir.cobgyms.util.JSONHandler;
 import net.gensir.cobgyms.util.LangUtils;
@@ -48,7 +48,7 @@ public class ModCommands {
         World world = serverPlayer.getWorld();
 
         if (world instanceof ServerWorld serverWorld) {
-            PacketHandler.handleLeaveGymPacket(serverPlayer, serverWorld);
+            LeaveGymPacket.handleLeaveGymPacket(serverPlayer, serverWorld);
             return 1;
         } else{
             serverPlayer.sendMessage(Text.translatable("cobgyms.lang.message.no_response"));

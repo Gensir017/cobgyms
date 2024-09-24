@@ -18,7 +18,7 @@ import net.gensir.cobgyms.gym.Gym;
 import net.gensir.cobgyms.gym.gyms.GymForest;
 import net.gensir.cobgyms.gym.gyms.GymLava;
 import net.gensir.cobgyms.gym.gyms.GymWater;
-import net.gensir.cobgyms.network.PacketHandler;
+import net.gensir.cobgyms.network.ServerPacketHandler;
 import net.gensir.cobgyms.registry.*;
 import net.gensir.cobgyms.util.*;
 import net.gensir.cobgyms.world.dimension.ModDimensions;
@@ -34,7 +34,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
-import static net.gensir.cobgyms.network.PacketHandler.SPAWN_SCALED_PACKET_ID;
+import static net.gensir.cobgyms.network.ServerPacketHandler.SPAWN_SCALED_PACKET_ID;
 
 public final class CobGyms {
     public static final String MOD_ID = "cobgyms";
@@ -46,6 +46,8 @@ public final class CobGyms {
     public static Map<String, List<Map<String, Object>>> forceEvolutionMapper = PokemonForceEvolution.getForceEvolutions();
 
     public static List<DelayedCall> delayedCalls = new ArrayList<>();
+
+//    public static int GYM_ENTRANCE_USAGES = 3;
 
     public static void init() {
         ModDimensions.initialize();
@@ -63,7 +65,7 @@ public final class CobGyms {
         GymRegistry.add(GymLava.prepGym());
         GymRegistry.add(GymWater.prepGym());
 
-        PacketHandler.register();
+        ServerPacketHandler.register();
         ModLootTableModifiers.modifyLootTables();
         ModEvents.registerEvents();
 

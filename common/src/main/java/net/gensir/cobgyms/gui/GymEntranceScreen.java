@@ -10,19 +10,23 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
+import net.minecraft.util.math.BlockPos;
 import org.lwjgl.glfw.GLFW;
 
+import static net.gensir.cobgyms.network.ServerPacketHandler.GYM_ENTRANCE_PACKET_ID;
 
-import static net.gensir.cobgyms.network.ServerPacketHandler.START_GYM_PACKET_ID;
+public class GymEntranceScreen extends Screen {
 
-public class StartGymScreen extends Screen {
-
+    private final int timesUsed;
+    private final BlockPos pos;
     private int integerValue = 0;
     private TextFieldWidget integerField;
     private boolean tooLowLevel = false;
 
-    public StartGymScreen() {
+    public GymEntranceScreen(int timesUsed, BlockPos pos) {
         super(Text.translatable("cobgyms.lang.menu.start.title"));
+        this.timesUsed = timesUsed;
+        this.pos = pos;
     }
 
     @Override
@@ -85,7 +89,9 @@ public class StartGymScreen extends Screen {
                 this.close();
                 PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
                 buf.writeInt(level);
-                NetworkManager.sendToServer(START_GYM_PACKET_ID, buf);
+                buf.writeBlockPos(this.pos);
+
+                NetworkManager.sendToServer(GYM_ENTRANCE_PACKET_ID, buf);
             }
         } catch (Throwable e) {
             CobGyms.LOGGER.info(String.valueOf(e));
@@ -127,6 +133,8 @@ public class StartGymScreen extends Screen {
         }
 
         integerField.render(context, mouseX, mouseY, delta);
+
+        context.drawCenteredTextWithShadow(this.textRenderer, Text.of("You have used this "+timesUsed+" time(s)"), this.width / 2, ((this.height - 60) / 2) - 65, 0xFFFFFF);
 
         context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.start.level"), this.width / 2, ((this.height - 60) / 2) - 25, 0xFFFFFF);
 

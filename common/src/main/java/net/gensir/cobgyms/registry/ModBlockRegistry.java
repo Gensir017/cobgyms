@@ -69,6 +69,13 @@ public class ModBlockRegistry {
             new BlockItem(GYM_EXIT.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
 
 
+//    public static final RegistrySupplier<Block> GYM_ENTRANCE = BLOCKS.register("gym_entrance", () ->
+//            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK)));
+//
+//    public static final RegistrySupplier<Item> GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance", () ->
+//            new BlockItem(GYM_ENTRANCE.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
+
+
     public static final RegistrySupplier<Block> SAFE_MAGMA = BLOCKS.register("safe_magma", () ->
             new Block(Block.Settings.copy(Blocks.MAGMA_BLOCK)));
 
