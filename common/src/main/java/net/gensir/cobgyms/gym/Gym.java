@@ -18,17 +18,20 @@ public class Gym {
     private final String structureName;
     private final List<Float> playerRotations;
     private final BlockPos exitCoords;
+    public final String theme;
 
     public Gym(List<Map<String, Object>> trainerArgs,
                List<Double> playerSpawn,
                String structureName,
                List<Float> playerRotations,
-               BlockPos exitCoords){
+               BlockPos exitCoords,
+               String theme){
         this.trainerArgs = trainerArgs;
         this.playerSpawn = playerSpawn;
         this.structureName = structureName;
         this.playerRotations = playerRotations;
         this.exitCoords = exitCoords;
+        this.theme = theme;
     }
 
     public Map<String, Object> buildGym(int pokemonLevel,

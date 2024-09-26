@@ -18,6 +18,7 @@ import net.gensir.cobgyms.gym.Gym;
 import net.gensir.cobgyms.gym.gyms.GymForest;
 import net.gensir.cobgyms.gym.gyms.GymLava;
 import net.gensir.cobgyms.gym.gyms.GymWater;
+import net.gensir.cobgyms.network.ClientPacketHandler;
 import net.gensir.cobgyms.network.ServerPacketHandler;
 import net.gensir.cobgyms.registry.*;
 import net.gensir.cobgyms.util.*;
@@ -47,7 +48,7 @@ public final class CobGyms {
 
     public static List<DelayedCall> delayedCalls = new ArrayList<>();
 
-//    public static int GYM_ENTRANCE_USAGES = 3;
+    public static int GYM_ENTRANCE_USAGES = 3;
 
     public static void init() {
         ModDimensions.initialize();
@@ -102,6 +103,8 @@ public final class CobGyms {
 
             int spawnTimerSeconds = 600;
             int spawnTimerTicks = spawnTimerSeconds * 20;
+
+            ClientPacketHandler.register();
 
             AtomicInteger timer = new AtomicInteger(0);
             ClientTickEvent.CLIENT_LEVEL_PRE.register(instance -> {

@@ -12,16 +12,17 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 
 
-public class GymExitBlockEntityRenderer implements BlockEntityRenderer<GymExitBlockEntity> {
+public class GymEntranceBlockEntityRenderer implements BlockEntityRenderer<GymEntranceBlockEntity> {
     private final TextRenderer textRenderer;
 
-    public GymExitBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
+    public GymEntranceBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
         this.textRenderer = MinecraftClient.getInstance().textRenderer;
     }
 
     @Override
-    public void render(GymExitBlockEntity blockEntity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        Text text = Text.translatable("cobgyms.lang.gym_exit.message");
+    public void render(GymEntranceBlockEntity blockEntity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+        String theme = blockEntity.getTheme();
+        Text text = Text.translatable("cobgyms.lang.gym_entrance.message", Text.translatable("cobgyms.lang." + theme));
 
         matrices.push();
         matrices.translate(0.5, 1.5, 0.5);

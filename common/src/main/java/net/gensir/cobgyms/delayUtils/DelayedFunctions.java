@@ -1,6 +1,7 @@
 package net.gensir.cobgyms.delayUtils;
 
 import net.gensir.cobgyms.util.JSONHandler;
+import net.gensir.cobgyms.util.TeleportHelper;
 import net.minecraft.network.packet.s2c.play.PositionFlag;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -15,33 +16,33 @@ import java.util.Map;
 
 public class DelayedFunctions {
     public static void leaveGym(DelayedCall delayedCall){
-        ServerPlayerEntity player = delayedCall.player;
-        Path worldSavePath = player.getServer().getSavePath(WorldSavePath.PLAYERDATA).getParent();
-        String playerJSONpath = worldSavePath.resolve("cobgyms/" + player.getUuidAsString() + ".json").toString();
+        ServerPlayerEntity serverPlayer = delayedCall.player;
+        Path worldSavePath = serverPlayer.getServer().getSavePath(WorldSavePath.PLAYERDATA).getParent();
+        String playerJSONpath = worldSavePath.resolve("cobgyms/" + serverPlayer.getUuidAsString() + ".json").toString();
         Map<String, Object> JSONcontent = JSONHandler.readJSON(playerJSONpath);
 
         if(JSONcontent.isEmpty() || !JSONcontent.containsKey("originalDim") || !JSONcontent.containsKey("originalPos")){
-            ServerWorld overworld = player.getServer().getOverworld();
+            ServerWorld overworld = serverPlayer.getServer().getOverworld();
             BlockPos overworldSpawn = overworld.getSpawnPos();
 
-            player.teleport(
+            TeleportHelper.teleportPlayer(
+                    serverPlayer,
                     overworld,
                     overworldSpawn.getX(),
                     overworldSpawn.getY(),
                     overworldSpawn.getZ(),
-                    PositionFlag.getFlags(1),
                     0.0F,
                     0.0F);
+
         } else {
-            ServerWorld originalDim = (player.getServer().getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(JSONcontent.get("originalDim").toString()))));
+            ServerWorld originalDim = (serverPlayer.getServer().getWorld(RegistryKey.of(RegistryKeys.WORLD, new Identifier(JSONcontent.get("originalDim").toString()))));
             String[] originalPos = JSONcontent.get("originalPos").toString().split(",");
 
-            player.teleport(
+            TeleportHelper.teleportPlayer(serverPlayer,
                     originalDim,
                     Double.parseDouble(originalPos[0]),
                     Double.parseDouble(originalPos[1]),
                     Double.parseDouble(originalPos[2]),
-                    PositionFlag.getFlags(1),
                     0.0F,
                     0.0F);
         }

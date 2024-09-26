@@ -4,6 +4,7 @@ import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.gensir.cobgyms.block.entity.GymEntranceBlockEntityRenderer;
 import net.gensir.cobgyms.block.entity.GymExitBlockEntityRenderer;
 import net.gensir.cobgyms.registry.ModBlockEntityRegistry;
 import net.gensir.cobgyms.registry.ModBlockRegistry;
@@ -31,5 +32,7 @@ public final class CobGymsFabricClient implements ClientModInitializer {
         }, ModBlockRegistry.PERSISTENT_LEAVES.get());
 
         BlockEntityRendererRegistry.register(ModBlockEntityRegistry.GYM_EXIT_ENTITY.get(), GymExitBlockEntityRenderer::new);
+
+        BlockEntityRendererRegistry.register(ModBlockEntityRegistry.GYM_ENTRANCE_ENTITY.get(), GymEntranceBlockEntityRenderer::new);
     }
 }

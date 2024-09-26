@@ -9,6 +9,7 @@
   "cobgyms.lang.woodland": "§2Woodland§r",
   "cobgyms.lang.volcanic": "§4Volcanic§r",
   "cobgyms.lang.aquatic": "§bAquatic§r",
+  "cobgyms.lang.random": "Random",
 
   "cobgyms.lang.rarity.lesser": "common",
   "cobgyms.lang.rarity.adept": "uncommon",
@@ -35,7 +36,7 @@
   "cobgyms.lang.poke_cache_received_shiny": "You Received a §dShiny§r §b%s§r from the Poke Caché!",
 
   "item.cobgyms.gym_key": "Poké Gym Key",
-  "tooltip.cobgyms.gym_key.tooltip": "Right-click with this to start a Gym Battle.",
+  "tooltip.cobgyms.gym_key.tooltip": "Right-click with this to start a random Gym Battle.",
 
   "cobgyms.lang.poke_shard_block": "%s Poké Shard Block",
 
@@ -77,9 +78,12 @@
 
   "cobgyms.lang.gym_exit.message": "Right-Click to Leave",
 
+  "cobgyms.lang.gym_entrance.message": "Right-Click to enter a %s Gym",
+
   "cobgyms.lang.menu.yes": "Yes",
   "cobgyms.lang.menu.no": "No",
   "cobgyms.lang.menu.cancel": "Cancel",
+  "cobgyms.lang.menu.enter_no_theme": "§lEnter a Random Gym§r",
 
   "cobgyms.lang.menu.leave.confirmation": "Are you sure you want to leave the Gym?",
   "cobgyms.lang.menu.leave.title": "Leave the Gym?",
@@ -89,9 +93,18 @@
   "cobgyms.lang.menu.start.rewards": "Higher levels are more likely to give better rewards",
   "cobgyms.lang.menu.start.level_min": "Gym Pokémon Level must be at least 5",
 
+  "cobgyms.lang.menu.entrance.limit": "You cannot use this entrance as you have exceeded the usage limit",
+  "cobgyms.lang.menu.entrance.times_available": "You can use this entrance %d more time(s)",
+  "cobgyms.lang.menu.entrance.enter_theme": "§lEnter a %s Gym§r",
+
   "cobgyms.lang.gym.first_time.part_one": "- Welcome to your first Gym.",
   "cobgyms.lang.gym.first_time.part_two": "- Beat all the trainers and the leader to be rewarded.",
   "cobgyms.lang.gym.first_time.part_three": "- If your Pokémon all faint or you forfeit a battle then you will whiteout.",
   "cobgyms.lang.gym.first_time.part_four": "- You can leave at any time with the Gym Exit block near the entrance.",
-  "cobgyms.lang.gym.first_time.part_five": "- You cannot break or place blocks except for torches."
+  "cobgyms.lang.gym.first_time.part_five": "- You cannot break or place blocks except for torches.",
+
+  "block.cobgyms.gym_entrance": "Gym Entrance",
+  "block.cobgyms.gym_entrance_woodland": "§2Woodland§r Gym Entrance",
+  "block.cobgyms.gym_entrance_volcanic": "§4Volcanic§r Gym Entrance",
+  "block.cobgyms.gym_entrance_aquatic": "§bAquatic§r Gym Entrance"
 }

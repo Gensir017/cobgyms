@@ -13,20 +13,24 @@ import net.minecraft.util.Colors;
 import net.minecraft.util.math.BlockPos;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.Objects;
+
 import static net.gensir.cobgyms.network.ServerPacketHandler.GYM_ENTRANCE_PACKET_ID;
 
 public class GymEntranceScreen extends Screen {
 
     private final int timesUsed;
     private final BlockPos pos;
+    private final String theme;
     private int integerValue = 0;
     private TextFieldWidget integerField;
     private boolean tooLowLevel = false;
 
-    public GymEntranceScreen(int timesUsed, BlockPos pos) {
+    public GymEntranceScreen(int timesUsed, BlockPos pos, String theme) {
         super(Text.translatable("cobgyms.lang.menu.start.title"));
         this.timesUsed = timesUsed;
         this.pos = pos;
+        this.theme = theme;
     }
 
     @Override
@@ -74,7 +78,7 @@ public class GymEntranceScreen extends Screen {
 
 
         this.addDrawableChild(ButtonWidget.builder(Text.translatable("cobgyms.lang.menu.start.title"), button -> {
-            sendStartGymPacket(integerField.getText());
+            sendGymEntrancePacket(integerField.getText());
         }).dimensions(bigButtonX - bigButtonWidth - 5, y + fieldHeight + 30, bigButtonWidth, buttonHeight).build());
 
         this.addDrawableChild(ButtonWidget.builder(Text.translatable("cobgyms.lang.menu.cancel"), button -> {
@@ -82,7 +86,7 @@ public class GymEntranceScreen extends Screen {
         }).dimensions(bigButtonX + 5, y + fieldHeight + 30, bigButtonWidth, buttonHeight).build());
     }
 
-    private void sendStartGymPacket(String stringLevel) {
+    private void sendGymEntrancePacket(String stringLevel) {
         try {
             int level = checkLevel(Integer.parseInt(stringLevel));
             if (level >= 5){
@@ -90,6 +94,7 @@ public class GymEntranceScreen extends Screen {
                 PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
                 buf.writeInt(level);
                 buf.writeBlockPos(this.pos);
+                buf.writeString(this.theme);
 
                 NetworkManager.sendToServer(GYM_ENTRANCE_PACKET_ID, buf);
             }
@@ -134,7 +139,16 @@ public class GymEntranceScreen extends Screen {
 
         integerField.render(context, mouseX, mouseY, delta);
 
-        context.drawCenteredTextWithShadow(this.textRenderer, Text.of("You have used this "+timesUsed+" time(s)"), this.width / 2, ((this.height - 60) / 2) - 65, 0xFFFFFF);
+        context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.entrance.enter_theme",Text.translatable("cobgyms.lang."+this.theme)), this.width / 2, ((this.height - 60) / 2) - 65, 0xFFFFFF);
+
+        if (CobGyms.GYM_ENTRANCE_USAGES != -1){
+            int timesAvailable = CobGyms.GYM_ENTRANCE_USAGES - timesUsed;
+            if (timesAvailable > 0){
+                context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.entrance.times_available",timesAvailable), this.width / 2, ((this.height - 60) / 2) - 45, 0xFFFFFF);
+            } else {
+                context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.entrance.limit"), this.width / 2, ((this.height - 60) / 2) - 45, Colors.RED);
+            }
+        }
 
         context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.start.level"), this.width / 2, ((this.height - 60) / 2) - 25, 0xFFFFFF);
 

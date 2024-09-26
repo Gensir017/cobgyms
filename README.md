@@ -70,6 +70,8 @@ Beating a Gym yields __rewards that scale based on the Gym Pokémon level chosen
 ### Planned Features
 - Config for the various values such as Wild Pokémon Level Scaling timer or Shiny chance from Shiny Poké Caches etc.
 - Optional Datapacks that modifiy the recipes of Poké Caches to use Poké Shard Blocks instead of shards, meaning they would be more expensive and harder to get.
+- Gym "Entrance" structures that spawn in the overworld.
+- Skins for the Trainer Villagers or change model to the same model used by a player.
 
 ---
 ### Credits

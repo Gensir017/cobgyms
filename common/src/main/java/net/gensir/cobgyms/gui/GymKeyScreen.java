@@ -13,15 +13,17 @@ import net.minecraft.util.Colors;
 import org.lwjgl.glfw.GLFW;
 
 
-import static net.gensir.cobgyms.network.ServerPacketHandler.START_GYM_PACKET_ID;
+import java.util.Objects;
 
-public class StartGymScreen extends Screen {
+import static net.gensir.cobgyms.network.ServerPacketHandler.GYM_KEY_PACKET_ID;
+
+public class GymKeyScreen extends Screen {
 
     private int integerValue = 0;
     private TextFieldWidget integerField;
     private boolean tooLowLevel = false;
 
-    public StartGymScreen() {
+    public GymKeyScreen() {
         super(Text.translatable("cobgyms.lang.menu.start.title"));
     }
 
@@ -85,7 +87,7 @@ public class StartGymScreen extends Screen {
                 this.close();
                 PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
                 buf.writeInt(level);
-                NetworkManager.sendToServer(START_GYM_PACKET_ID, buf);
+                NetworkManager.sendToServer(GYM_KEY_PACKET_ID, buf);
             }
         } catch (Throwable e) {
             CobGyms.LOGGER.info(String.valueOf(e));
@@ -127,6 +129,8 @@ public class StartGymScreen extends Screen {
         }
 
         integerField.render(context, mouseX, mouseY, delta);
+
+        context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.enter_no_theme"), this.width / 2, ((this.height - 60) / 2) - 65, 0xFFFFFF);
 
         context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("cobgyms.lang.menu.start.level"), this.width / 2, ((this.height - 60) / 2) - 25, 0xFFFFFF);
 

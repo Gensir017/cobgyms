@@ -47,7 +47,7 @@ public class SpawnScaledPacket {
                                 !entity.isBattling()
                 );
 
-                if (!nearbyPokemon.isEmpty()) {
+                if (nearbyPokemon.size() > 3) {
                     List<PokemonEntity> highLevelPokemon = nearbyPokemon.stream()
                             .filter(entity -> entity.getPokemon().getLevel() >= highestLevelBeaten - 10)
                             .toList();

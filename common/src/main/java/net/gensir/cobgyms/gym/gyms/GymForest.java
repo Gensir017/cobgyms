@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class GymForest {
+    private static final String theme = "woodland";
+
     public static Gym prepGym(){
         List<Map<String, Object>> trainerArgs = new ArrayList<>();
 
@@ -96,6 +98,6 @@ public class GymForest {
         playerRotations.add(-90.0F);
         playerRotations.add(0.0F);
 
-        return new Gym(trainerArgs, playerSpawn, "gym_forest", playerRotations, new BlockPos(14, -53, 15));
+        return new Gym(trainerArgs, playerSpawn, "gym_forest", playerRotations, new BlockPos(14, -53, 15), theme);
     }
 }

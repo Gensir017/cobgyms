@@ -3,6 +3,7 @@ package net.gensir.cobgyms.registry;
 import dev.architectury.core.block.ArchitecturyLiquidBlock;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.gensir.cobgyms.block.GymEntranceBlock;
 import net.gensir.cobgyms.block.GymExitBlock;
 import net.gensir.cobgyms.item.custom.RarityBlockItem;
 import net.gensir.cobgyms.util.ModItemGroup;
@@ -69,13 +70,6 @@ public class ModBlockRegistry {
             new BlockItem(GYM_EXIT.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
 
 
-//    public static final RegistrySupplier<Block> GYM_ENTRANCE = BLOCKS.register("gym_entrance", () ->
-//            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK)));
-//
-//    public static final RegistrySupplier<Item> GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance", () ->
-//            new BlockItem(GYM_ENTRANCE.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
-
-
     public static final RegistrySupplier<Block> SAFE_MAGMA = BLOCKS.register("safe_magma", () ->
             new Block(Block.Settings.copy(Blocks.MAGMA_BLOCK)));
 
@@ -132,6 +126,35 @@ public class ModBlockRegistry {
                     null, // tooltips
                     Formatting.GOLD,
                     true));
+
+
+
+
+    // Gym entrances
+    public static final RegistrySupplier<Block> GYM_ENTRANCE = BLOCKS.register("gym_entrance", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "random"));
+
+    public static final RegistrySupplier<Item> GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance", () ->
+            new BlockItem(GYM_ENTRANCE.get(), new Item.Settings()));
+
+
+    public static final RegistrySupplier<Block> WOODLAND_GYM_ENTRANCE = BLOCKS.register("gym_entrance_woodland", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "woodland"));
+
+    public static final RegistrySupplier<Item> WOODLAND_GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_woodland", () ->
+            new BlockItem(WOODLAND_GYM_ENTRANCE.get(), new Item.Settings()));
+
+    public static final RegistrySupplier<Block> VOLCANIC_GYM_ENTRANCE = BLOCKS.register("gym_entrance_volcanic", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "volcanic"));
+
+    public static final RegistrySupplier<Item> VOLCANIC_GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_volcanic", () ->
+            new BlockItem(VOLCANIC_GYM_ENTRANCE.get(), new Item.Settings()));
+
+    public static final RegistrySupplier<Block> AQUATIC_GYM_ENTRANCE = BLOCKS.register("gym_entrance_aquatic", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "aquatic"));
+
+    public static final RegistrySupplier<Item> AQUATIC_GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_aquatic", () ->
+            new BlockItem(AQUATIC_GYM_ENTRANCE.get(), new Item.Settings()));
 
 
     public static void initialize() {

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 public class GymWater {
+    private static final String theme = "aquatic";
+
     public static Gym prepGym(){
         List<Map<String, Object>> trainerArgs = new ArrayList<>();
 
@@ -23,7 +25,6 @@ public class GymWater {
                         "squirtle", // blastoise
                         "tentacool", // tentacruel
                         "wingull", // pelipper
-                        "abra", // alakazam
                         "misdreavus", // mismagius
                         "psyduck", // golduck
                         "poliwag", // poliwhirl
@@ -96,6 +97,6 @@ public class GymWater {
         playerRotations.add(115.0F);
         playerRotations.add(0.0F);
 
-        return new Gym(trainerArgs, playerSpawn, "gym_water", playerRotations, new BlockPos(32, -47, 33));
+        return new Gym(trainerArgs, playerSpawn, "gym_water", playerRotations, new BlockPos(32, -47, 33), theme);
     }
 }

@@ -7,14 +7,15 @@ import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.BlockEvent;
+import dev.architectury.event.events.common.EntityEvent;
 import dev.architectury.event.events.common.InteractionEvent;
 import kotlin.Unit;
 import net.gensir.cobgyms.registry.ModBlockRegistry;
 import net.gensir.cobgyms.registry.ModItemRegistry;
-import net.gensir.cobgyms.util.ClientUtils;
 import net.gensir.cobgyms.world.dimension.ModDimensions;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -54,11 +55,17 @@ public class ModEvents {
         InteractionEvent.RIGHT_CLICK_BLOCK.register((player, hand, pos, face) -> {
             World world = player.getWorld();
             if (world.getRegistryKey() == ModDimensions.COBGYMS_LEVEL_KEY){
-                if (world.getBlockState(pos).getBlock() == ModBlockRegistry.GYM_EXIT.get()){
-                    ClientUtils.openLeaveGymScreen();
+                if (player.getStackInHand(hand).getItem() != Items.TORCH &&
+                        world.getBlockState(pos).getBlock() != ModBlockRegistry.GYM_EXIT.get()) {
                     return EventResult.interrupt(false);
                 }
-                if (player.getStackInHand(hand).getItem() != Items.TORCH) {
+            }
+            return EventResult.pass();
+        });
+
+        EntityEvent.LIVING_HURT.register((entity, source, amount) -> {
+            if (entity instanceof PlayerEntity && entity.getWorld().getRegistryKey() == ModDimensions.COBGYMS_LEVEL_KEY) {
+                if(source.isOf(DamageTypes.FALL)){
                     return EventResult.interrupt(false);
                 }
             }
