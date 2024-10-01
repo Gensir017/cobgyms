@@ -14,6 +14,7 @@ import net.minecraft.util.WorldSavePath;
 import net.minecraft.util.math.Vec3d;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -82,7 +83,13 @@ public class GymHandler {
                     JSONcontent.put("trainers", gymData.get("trainers"));
                     JSONcontent.put("adjustX", adjustX);
                     JSONcontent.put("originalDim", originalDim);
-                    JSONcontent.put("originalPos", originalPos);
+
+                    List<Double> parsedOriginalPos = new ArrayList<>();
+                    parsedOriginalPos.add(originalPos.getX());
+                    parsedOriginalPos.add(originalPos.getY());
+                    parsedOriginalPos.add(originalPos.getZ());
+
+                    JSONcontent.put("originalPos", parsedOriginalPos);
                     JSONHandler.writeJSON(JSONcontent, playerJSONpath);
 
                     long endTime = System.currentTimeMillis();
