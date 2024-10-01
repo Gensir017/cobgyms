@@ -1,4 +1,4 @@
-# ! IF UPDATING TO v2.0.0 FROM AN OLDER VERSION READ [THIS]()
+# ! IF UPDATING TO v2.0.0 FROM AN OLDER VERSION READ [THIS](https://github.com/Gensir017/cobgyms/blob/cd3308a1b92a9799ee830e12d5c6a6dcbfb477ee/UpdatingREADME.md)
 
 <details>
   <summary><b>Requirements</b></summary>
