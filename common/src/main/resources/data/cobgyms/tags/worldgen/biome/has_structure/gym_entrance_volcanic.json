@@ -1,0 +1,10 @@
+{
+  "replace": false,
+
+  "values": [
+    "#cobblemon:is_volcanic",
+    "#cobblemon:is_thermal",
+    "#cobblemon:is_plains",
+    "#cobblemon:is_savanna"
+  ]
+}

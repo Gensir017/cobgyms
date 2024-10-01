@@ -10,6 +10,7 @@ import dev.architectury.event.events.common.BlockEvent;
 import dev.architectury.event.events.common.EntityEvent;
 import dev.architectury.event.events.common.InteractionEvent;
 import kotlin.Unit;
+import net.gensir.cobgyms.CobGyms;
 import net.gensir.cobgyms.registry.ModBlockRegistry;
 import net.gensir.cobgyms.registry.ModItemRegistry;
 import net.gensir.cobgyms.world.dimension.ModDimensions;
@@ -38,6 +39,24 @@ public class ModEvents {
         BlockEvent.BREAK.register((world, pos, state, player, xp) -> {
             if (world.getRegistryKey() == ModDimensions.COBGYMS_LEVEL_KEY){
                 if (state.getBlock() != Blocks.TORCH && state.getBlock() != Blocks.WALL_TORCH) {
+                    return EventResult.interrupt(false);
+                }
+            }
+            if (state.getBlock() == ModBlockRegistry.GYM_ENTRANCE.get() ||
+                    state.getBlock() == ModBlockRegistry.GYM_ENTRANCE_WOODLAND.get() ||
+                    state.getBlock() == ModBlockRegistry.GYM_ENTRANCE_VOLCANIC.get() ||
+                    state.getBlock() == ModBlockRegistry.GYM_ENTRANCE_AQUATIC.get()){
+                boolean cancelBreak = false;
+                if (!player.isSneaking()){
+                    player.sendMessage(Text.of("- You must be sneaking to break a Gym Entrance"));
+                    cancelBreak = true;
+                }
+                if (CobGyms.BREAK_ENTRANCE_REQUIRES_PERMISSION && !player.hasPermissionLevel(2)){
+                    player.sendMessage(Text.of("- You must have op permissions to break a Gym Entrance"));
+                    cancelBreak = true;
+                }
+                if (cancelBreak){
+                    player.sendMessage(Text.of("- Gym Entrances do not drop when broken, if you break this then all players will lose access to this entrance"));
                     return EventResult.interrupt(false);
                 }
             }
@@ -76,7 +95,7 @@ public class ModEvents {
 
 
     private static Unit onCaptured(PokemonCapturedEvent event) {
-        randomGymKey(event.getPlayer(), event.getPokemon(), 26);
+        randomGymKey(event.getPlayer(), event.getPokemon(), true);
 
         return Unit.INSTANCE;
     }
@@ -90,7 +109,7 @@ public class ModEvents {
             Pokemon poke = killed.getEffectedPokemon();
 
             if (!poke.isPlayerOwned() && !poke.isUncatchable()) {
-                randomGymKey(playerEntity, poke, 28);
+                randomGymKey(playerEntity, poke, false);
             }
         }
 
@@ -98,7 +117,7 @@ public class ModEvents {
     }
 
 
-    private static void randomGymKey(PlayerEntity player, Pokemon poke, int scalar) {
+    private static void randomGymKey(PlayerEntity player, Pokemon poke, boolean isCapture) {
         BlockPos pos;
         World world = player.getEntityWorld();
 
@@ -108,10 +127,15 @@ public class ModEvents {
             pos = poke.getEntity().getBlockPos();
         }
 
-        int randomChance = (int) scalar-(poke.getLevel()/5);
-        int randomNumber = random.nextInt(randomChance);
+        double randomChance;
+        if(isCapture){
+            randomChance = CobGyms.KEY_DROP_CHANCE*(1+((double) poke.getLevel() /100))*1.2;
+        } else {
+            randomChance = CobGyms.KEY_DROP_CHANCE*(1+((double) poke.getLevel() /100));
+        }
 
-        if(randomNumber == 0){
+        double randomDouble = random.nextDouble();
+        if (randomDouble <= randomChance){
             ItemStack itemStack = new ItemStack(ModItemRegistry.GYM_KEY.get(), 1);
             ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack);
             PlayerInventory playerInventory = player.getInventory();

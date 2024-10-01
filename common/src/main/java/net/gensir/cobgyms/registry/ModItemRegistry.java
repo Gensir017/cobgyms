@@ -3,7 +3,7 @@ package net.gensir.cobgyms.registry;
 import dev.architectury.core.item.ArchitecturyBucketItem;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.gensir.cobgyms.item.custom.GymCacheItem;
+import net.gensir.cobgyms.item.custom.GymCacheItemOld;
 import net.gensir.cobgyms.item.custom.GymKeyItem;
 import net.gensir.cobgyms.item.custom.RarityItem;
 import net.gensir.cobgyms.util.ModItemGroup;
@@ -90,9 +90,9 @@ public class ModItemRegistry {
 
     // Lesser Caches
     public static final RegistrySupplier<Item> EMPTY_LESSER_CACHE = ITEMS.register("empty_lesser_cache", () ->
-            new RarityItem(new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB),
+            new RarityItem(new Item.Settings(),
                     Text.translatable("cobgyms.lang.empty_poke_cache", Text.translatable("cobgyms.lang.lesser")),
-                    null,
+                    new Text[]{Text.translatable("tooltip.cobgyms.deprecated01.tooltip"),Text.translatable("tooltip.cobgyms.deprecated02.tooltip")},
                     Formatting.RED,
                     false));
 
@@ -114,9 +114,9 @@ public class ModItemRegistry {
 
     // Adept Caches
     public static final RegistrySupplier<Item> EMPTY_ADEPT_CACHE = ITEMS.register("empty_adept_cache", () ->
-            new RarityItem(new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB),
+            new RarityItem(new Item.Settings(),
                     Text.translatable("cobgyms.lang.empty_poke_cache", Text.translatable("cobgyms.lang.adept")),
-                    null,
+                    new Text[]{Text.translatable("tooltip.cobgyms.deprecated01.tooltip"),Text.translatable("tooltip.cobgyms.deprecated02.tooltip")},
                     Formatting.BLUE,
                     false));
 
@@ -138,9 +138,9 @@ public class ModItemRegistry {
 
     // Master Caches
     public static final RegistrySupplier<Item> EMPTY_MASTER_CACHE = ITEMS.register("empty_master_cache", () ->
-            new RarityItem(new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB),
+            new RarityItem(new Item.Settings(),
                     Text.translatable("cobgyms.lang.empty_poke_cache", Text.translatable("cobgyms.lang.master")),
-                    null,
+                    new Text[]{Text.translatable("tooltip.cobgyms.deprecated01.tooltip"),Text.translatable("tooltip.cobgyms.deprecated02.tooltip")},
                     Formatting.LIGHT_PURPLE,
                     false));
 
@@ -162,46 +162,26 @@ public class ModItemRegistry {
 
     // Legendary Cache
     public static final RegistrySupplier<Item> EMPTY_LEGENDARY_CACHE = ITEMS.register("empty_legendary_cache", () ->
-            new RarityItem(new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB),
+            new RarityItem(new Item.Settings(),
                     Text.translatable("cobgyms.lang.empty_poke_cache", Text.translatable("cobgyms.lang.legendary")),
-                    null,
+                    new Text[]{Text.translatable("tooltip.cobgyms.deprecated01.tooltip"),Text.translatable("tooltip.cobgyms.deprecated02.tooltip")},
                     Formatting.GOLD,
                     false));
 
-    public static final List<RegistrySupplier<Item>> LEGENDARY_CACHE = registerCache(
-            "legendary",
-            null,
-            Formatting.GOLD);
-
-
 
     private static List<RegistrySupplier<Item>> registerCache(String rarity, String cacheType, Formatting nameFormatting) {
-        String cacheKey;
-        Text[] tooltips;
-        MutableText displayName;
-        MutableText shinyDisplayName;
+        String cacheKey = String.format("%s_%s_cache", rarity, cacheType);
 
-        if (cacheType == null){
-            cacheKey = String.format("%s_cache", rarity);
+        Text[] tooltips = new Text[]{Text.translatable("tooltip.cobgyms.poke_cache_themed.tooltip", Text.translatable("cobgyms.lang.rarity."+rarity), Text.translatable("cobgyms.lang."+cacheType)),
+        Text.translatable("tooltip.cobgyms.deprecated01.tooltip"),Text.translatable("tooltip.cobgyms.deprecated02.tooltip")};
 
-            displayName = Text.translatable("cobgyms.lang.poke_cache_typeless", Text.translatable("cobgyms.lang."+rarity));
-            shinyDisplayName = Text.translatable("cobgyms.lang.poke_cache_typeless_shiny", Text.translatable("cobgyms.lang."+rarity));
+        MutableText displayName = Text.translatable("cobgyms.lang.poke_cache_themed", Text.translatable("cobgyms.lang."+rarity), Text.translatable("cobgyms.lang."+cacheType));
+        MutableText shinyDisplayName = Text.translatable("cobgyms.lang.poke_cache_shiny_themed", Text.translatable("cobgyms.lang."+rarity), Text.translatable("cobgyms.lang."+cacheType));
 
-            tooltips = new Text[]{Text.translatable("tooltip.cobgyms.poke_cache_typeless.tooltip", Text.translatable("cobgyms.lang."+rarity))};
-
-        } else {
-            cacheKey = String.format("%s_%s_cache", rarity, cacheType);
-
-            tooltips = new Text[]{Text.translatable("tooltip.cobgyms.poke_cache.tooltip", Text.translatable("cobgyms.lang.rarity."+rarity), Text.translatable("cobgyms.lang."+cacheType))};
-
-            displayName = Text.translatable("cobgyms.lang.poke_cache", Text.translatable("cobgyms.lang."+rarity), Text.translatable("cobgyms.lang."+cacheType));
-
-            shinyDisplayName = Text.translatable("cobgyms.lang.poke_cache_shiny", Text.translatable("cobgyms.lang."+rarity), Text.translatable("cobgyms.lang."+cacheType));
-        }
 
         List<RegistrySupplier<Item>> itemList = new ArrayList<>();
         RegistrySupplier<Item> item = ITEMS.register(cacheKey, () ->
-                new GymCacheItem(new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB).maxDamage(1),
+                new GymCacheItemOld(new Item.Settings().maxDamage(1),
                         cacheKey,
                         false,
                         displayName,
@@ -209,7 +189,7 @@ public class ModItemRegistry {
                         tooltips));
 
         RegistrySupplier<Item> shinyItem = ITEMS.register(cacheKey+"_shiny", () ->
-                new GymCacheItem(new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB).maxDamage(1),
+                new GymCacheItemOld(new Item.Settings().maxDamage(1),
                         cacheKey,
                         true,
                         shinyDisplayName,

@@ -21,14 +21,15 @@
   "cobgyms.lang.poke_fragments": "%s Poké Shard Fragments",
   "tooltip.cobgyms.poke_fragments.tooltip": "Combine four of these to make a %s Poké Shard.",
 
-  "cobgyms.lang.poke_cache": "%s %s Poké Cache",
-  "cobgyms.lang.poke_cache_shiny": "Shiny %s %s Poké Cache",
-  "tooltip.cobgyms.poke_cache.tooltip": "Gives a random %s %s themed Pokémon.",
-  "tooltip.cobgyms.shiny_cache.tooltip": "§7Increased chance of a Shiny Pokémon",
+  "cobgyms.lang.poke_cache_themed": "%s %s Poké Cache",
+  "cobgyms.lang.poke_cache_themed_shiny": "Shiny %s %s Poké Cache",
+  "tooltip.cobgyms.poke_cache_themed.tooltip": "Gives a random %s %s themed Pokémon.",
 
-  "cobgyms.lang.poke_cache_typeless": "%s Poké Cache",
-  "cobgyms.lang.poke_cache_typeless_shiny": "Shiny %s Poké Cache",
-  "tooltip.cobgyms.poke_cache_typeless.tooltip": "Gives a random %s Pokémon.",
+
+  "cobgyms.lang.poke_cache": "%s Poké Cache",
+  "cobgyms.lang.poke_cache_shiny": "Shiny %s Poké Cache",
+  "tooltip.cobgyms.poke_cache.tooltip": "Gives a random %s Pokémon.",
+  "tooltip.cobgyms.shiny_cache.tooltip": "§7Increased chance of a Shiny Pokémon",
 
   "cobgyms.lang.empty_poke_cache": "Empty %s Poké Cache",
 
@@ -36,7 +37,7 @@
   "cobgyms.lang.poke_cache_received_shiny": "You Received a §dShiny§r §b%s§r from the Poke Caché!",
 
   "item.cobgyms.gym_key": "Poké Gym Key",
-  "tooltip.cobgyms.gym_key.tooltip": "Right-click with this to start a random Gym Battle.",
+  "tooltip.cobgyms.gym_key.tooltip": "Right-click with this to enter a random Gym.",
 
   "cobgyms.lang.poke_shard_block": "%s Poké Shard Block",
 
@@ -97,14 +98,20 @@
   "cobgyms.lang.menu.entrance.times_available": "You can use this entrance %d more time(s)",
   "cobgyms.lang.menu.entrance.enter_theme": "§lEnter a %s Gym§r",
 
+  "cobgyms.lang.menu.cache.button": "%s %s",
+
   "cobgyms.lang.gym.first_time.part_one": "- Welcome to your first Gym.",
   "cobgyms.lang.gym.first_time.part_two": "- Beat all the trainers and the leader to be rewarded.",
   "cobgyms.lang.gym.first_time.part_three": "- If your Pokémon all faint or you forfeit a battle then you will whiteout.",
   "cobgyms.lang.gym.first_time.part_four": "- You can leave at any time with the Gym Exit block near the entrance.",
   "cobgyms.lang.gym.first_time.part_five": "- You cannot break or place blocks except for torches.",
+  "cobgyms.lang.gym.first_time.part_six": "- Try not to die in a Gym, it's very difficult to get your stuff back.",
 
   "block.cobgyms.gym_entrance": "Gym Entrance",
   "block.cobgyms.gym_entrance_woodland": "§2Woodland§r Gym Entrance",
   "block.cobgyms.gym_entrance_volcanic": "§4Volcanic§r Gym Entrance",
-  "block.cobgyms.gym_entrance_aquatic": "§bAquatic§r Gym Entrance"
+  "block.cobgyms.gym_entrance_aquatic": "§bAquatic§r Gym Entrance",
+
+  "tooltip.cobgyms.deprecated01.tooltip": "§cThis item is now deprecated§r",
+  "tooltip.cobgyms.deprecated02.tooltip": "§cIt will be removed in a future update§r"
 }

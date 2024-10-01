@@ -1,0 +1,16 @@
+{
+  "name": "cobgyms:gym_entrance_volcanic_sand/start_pool",
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "cobgyms:gym_entrance_volcanic_sand",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

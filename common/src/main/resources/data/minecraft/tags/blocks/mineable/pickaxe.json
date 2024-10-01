@@ -4,6 +4,10 @@
     "cobgyms:ancient_relic",
     "cobgyms:deepslate_ancient_relic",
     "cobgyms:nether_ancient_relic",
-    "cobgyms:end_ancient_relic"
+    "cobgyms:end_ancient_relic",
+    "cobgyms:gym_entrance",
+    "cobgyms:gym_entrance_woodland",
+    "cobgyms:gym_entrance_volcanic",
+    "cobgyms:gym_entrance_aquatic"
   ]
 }

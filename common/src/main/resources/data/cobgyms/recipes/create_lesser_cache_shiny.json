@@ -3,21 +3,18 @@
   "category": "misc",
   "pattern": [
     "SSS",
-    "S S",
-    "ICI"
+    "SXS",
+    "SSS"
   ],
   "key": {
     "S": {
       "item": "cobgyms:lesser_shard"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
-    },
-    "C": {
-      "item": "minecraft:chest"
+    "X": {
+      "item": "cobgyms:lesser_cache"
     }
   },
   "result": {
-    "item": "cobgyms:empty_lesser_cache"
+    "item": "cobgyms:lesser_cache_shiny"
   }
 }

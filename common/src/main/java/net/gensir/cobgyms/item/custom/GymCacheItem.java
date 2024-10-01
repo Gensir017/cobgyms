@@ -1,14 +1,13 @@
 package net.gensir.cobgyms.item.custom;
 
-import com.cobblemon.mod.common.Cobblemon;
-import com.cobblemon.mod.common.api.storage.NoPokemonStoreException;
-import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
-import com.cobblemon.mod.common.pokemon.Pokemon;
-import net.gensir.cobgyms.cache.Cache;
+import dev.architectury.networking.NetworkManager;
+import io.netty.buffer.Unpooled;
+import net.gensir.cobgyms.util.ClientUtils;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -19,17 +18,20 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+
+import static net.gensir.cobgyms.network.ServerPacketHandler.CACHE_OPEN_PACKET_ID;
 
 public class GymCacheItem extends Item {
     private final Boolean increasedShinyChance;
     private final MutableText displayName;
     private final Formatting nameFormatting;
     private final Text[] tooltips;
-    private final String cacheKey;
+    private final String rarity;
 
-    public GymCacheItem(Settings settings, String cacheKey, Boolean increasedShinyChance, MutableText displayName, Formatting nameFormatting, Text[] tooltips) {
+    public GymCacheItem(Settings settings, String rarity, Boolean increasedShinyChance, MutableText displayName, Formatting nameFormatting, Text[] tooltips) {
         super(settings);
-        this.cacheKey = cacheKey;
+        this.rarity = rarity;
         this.increasedShinyChance = increasedShinyChance;
         this.displayName = displayName;
         this.nameFormatting = nameFormatting;
@@ -38,22 +40,16 @@ public class GymCacheItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if(!world.isClient()){
-            Pokemon poke = Cache.getCachePokemon(this.cacheKey, this.increasedShinyChance);
-            if(poke != null){
-                try {
-                    if(poke.getShiny()){
-                        user.sendMessage(Text.translatable("cobgyms.lang.poke_cache_received_shiny",poke.getDisplayName().getString()));
-                    } else {
-                        user.sendMessage(Text.translatable("cobgyms.lang.poke_cache_received",poke.getDisplayName().getString()));
-                    }
-                    PlayerPartyStore party = Cobblemon.INSTANCE.getStorage().getParty(user.getUuid());
-                    party.add(poke);
+        if(world.isClient()){
+            if (!Objects.equals(this.rarity, "legendary")){
+                ClientUtils.openGymCacheScreen(this.rarity, this.increasedShinyChance);
+            } else {
+                PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+                buf.writeString(this.rarity);
+                buf.writeString("no_theme");
+                buf.writeBoolean(this.increasedShinyChance);
 
-                    user.getStackInHand(hand).damage(1, user, playerEntity -> playerEntity.sendToolBreakStatus((playerEntity.getActiveHand())));
-                } catch (NoPokemonStoreException e) {
-                    throw new RuntimeException(e);
-                }
+                NetworkManager.sendToServer(CACHE_OPEN_PACKET_ID, buf);
             }
         }
         return super.use(world, user, hand);
@@ -78,6 +74,6 @@ public class GymCacheItem extends Item {
 
     @Override
     public Text getName(ItemStack stack) {
-        return displayName.formatted(this.nameFormatting);
+        return this.displayName.formatted(this.nameFormatting);
     }
 }

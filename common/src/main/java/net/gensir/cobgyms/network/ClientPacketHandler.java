@@ -2,6 +2,7 @@ package net.gensir.cobgyms.network;
 
 import dev.architectury.networking.NetworkManager;
 import net.gensir.cobgyms.util.ClientUtils;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
@@ -12,11 +13,12 @@ public class ClientPacketHandler {
 
     public static void register() {
         NetworkManager.registerReceiver(NetworkManager.Side.S2C, GYM_ENTRANCE_SCREEN_PACKET_ID, (buf, context) -> {
-            int level = buf.readInt();
+            int timesUsed = buf.readInt();
             BlockPos pos = buf.readBlockPos();
             String theme = buf.readString();
+            PlayerEntity player = context.getPlayer();
 
-            ClientUtils.openGymEntranceScreen(level, pos, theme);
+            ClientUtils.openGymEntranceScreen(timesUsed, pos, theme, player);
         });
 
     }

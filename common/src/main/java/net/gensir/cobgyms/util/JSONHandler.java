@@ -13,7 +13,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JSONHandler {
     public static Map<String, Object> readJSON(String filePath){
@@ -40,7 +43,7 @@ public class JSONHandler {
         }
     }
 
-    private static void folderHandler(String filePath){
+    public static void folderHandler(String filePath){
         Path folderPath = Paths.get(filePath).getParent();
         if (!Files.exists(folderPath)) {
             try {
@@ -86,5 +89,14 @@ public class JSONHandler {
 
         }
         return  adjustX;
+    }
+
+    public static List<Path> getAllJsonFiles(Path directory) throws IOException {
+        try (Stream<Path> stream = Files.walk(directory)) {
+            return stream
+                    .filter(Files::isRegularFile)        // Only regular files (not directories)
+                    .filter(path -> path.toString().endsWith(".json")) // Only .json files
+                    .collect(Collectors.toList());       // Collect the paths into a List
+        }
     }
 }

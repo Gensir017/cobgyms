@@ -4,6 +4,7 @@ import com.cobblemon.mod.common.api.pokemon.PokemonSpecies;
 import com.cobblemon.mod.common.pokemon.Gender;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
+import net.gensir.cobgyms.CobGyms;
 import net.gensir.cobgyms.cache.adept.AdeptAquaticCache;
 import net.gensir.cobgyms.cache.adept.AdeptVolcanicCache;
 import net.gensir.cobgyms.cache.adept.AdeptWoodlandCache;
@@ -98,8 +99,8 @@ public class Cache {
             poke.setLevel(1);
 
             if(increasedShinyChance){
-                int randomNumber = random.nextInt(50);
-                if(randomNumber == 0){
+                double randomDouble = random.nextDouble();
+                if (randomDouble <= CobGyms.SHINY_FROM_CACHE_CHANCE){
                     poke.setShiny(true);
                 }
             } else {

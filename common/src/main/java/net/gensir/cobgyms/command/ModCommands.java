@@ -14,6 +14,7 @@ import dev.architectury.event.events.common.CommandRegistrationEvent;
 import net.gensir.cobgyms.cache.Cache;
 import net.gensir.cobgyms.gym.lootTable.GymLootTable;
 import net.gensir.cobgyms.item.custom.ModFireworkRocketItem;
+import net.gensir.cobgyms.network.CacheListPacket;
 import net.gensir.cobgyms.network.LeaveGymPacket;
 import net.gensir.cobgyms.registry.ModBlockRegistry;
 import net.gensir.cobgyms.util.JSONHandler;
@@ -38,6 +39,7 @@ import net.minecraft.world.World;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -140,24 +142,11 @@ public class ModCommands {
     private static int listCache(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
         PlayerEntity player = Objects.requireNonNull(context.getSource().getPlayer());
         String cacheName = StringArgumentType.getString(context, "cacheName");
-        String [] cachePokemon = Cache.getCacheList(cacheName);
-        if (cachePokemon != null){
-            double chance = ((double) 1 /cachePokemon.length)*100;
-
-            String chanceString = String.format("%.2f", chance)+"%";
-            MutableText itemName = LangUtils.getCacheName(cacheName);
-
-            player.sendMessage(Text.translatable("cobgyms.lang.command.cache_chance", itemName, chanceString));
-
-            String cachePokemonString = "";
-            for (int i = 0; i < cachePokemon.length; i++) {
-                cachePokemonString += Text.translatable(String.format("cobblemon.species.%s.name",cachePokemon[i])).getString();
-                if (i < cachePokemon.length-1){
-                    cachePokemonString += " : ";
-                }
+        List<MutableText> textArray = CacheListPacket.cacheList(cacheName);
+        if (!textArray.isEmpty()){
+            for (MutableText text : textArray){
+                player.sendMessage(text);
             }
-            player.sendMessage(Text.literal(cachePokemonString));
-
             return 1;
         } else {
             player.sendMessage(Text.translatable("cobgyms.lang.command.list_cache.invalid_cache"));

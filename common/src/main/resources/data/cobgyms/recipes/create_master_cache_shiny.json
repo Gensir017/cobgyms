@@ -3,21 +3,18 @@
   "category": "misc",
   "pattern": [
     "SSS",
-    "S S",
-    "ICI"
+    "SXS",
+    "SSS"
   ],
   "key": {
     "S": {
       "item": "cobgyms:master_shard"
     },
-    "I": {
-      "item": "minecraft:diamond"
-    },
-    "C": {
-      "item": "minecraft:chest"
+    "X": {
+      "item": "cobgyms:master_cache"
     }
   },
   "result": {
-    "item": "cobgyms:empty_master_cache"
+    "item": "cobgyms:master_cache_shiny"
   }
 }

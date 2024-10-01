@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "cobgyms:gym_entrance",
+    "cobgyms:gym_entrance_woodland",
+    "cobgyms:gym_entrance_volcanic",
+    "cobgyms:gym_entrance_aquatic"
+  ]
+}

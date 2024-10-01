@@ -7,6 +7,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
@@ -19,12 +20,14 @@ import static net.gensir.cobgyms.network.ServerPacketHandler.GYM_KEY_PACKET_ID;
 
 public class GymKeyScreen extends Screen {
 
+    private final PlayerEntity player;
     private int integerValue = 0;
     private TextFieldWidget integerField;
     private boolean tooLowLevel = false;
 
-    public GymKeyScreen() {
+    public GymKeyScreen(PlayerEntity player) {
         super(Text.translatable("cobgyms.lang.menu.start.title"));
+        this.player = player;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class GymKeyScreen extends Screen {
         int y = (this.height - fieldHeight - 60) / 2;
         int bigButtonX = (this.width) / 2;
 
-        integerValue = 5;
+        integerValue = CobGyms.autoFillLevelMapper.getOrDefault(player.getUuid(), 5);
 
         integerField = new TextFieldWidget(this.textRenderer, x, y, fieldWidth, fieldHeight, Text.of(""));
         integerField.setMaxLength(3);
@@ -163,5 +166,12 @@ public class GymKeyScreen extends Screen {
     @Override
     public void tick() {
         integerField.tick();
+    }
+
+    @Override
+    public void close() {
+        int currentValue = integerField.getText().isEmpty() ? -1 : Integer.parseInt(integerField.getText());
+        CobGyms.autoFillLevelMapper.put(this.player.getUuid(),currentValue);
+        this.client.setScreen((Screen)null);
     }
 }

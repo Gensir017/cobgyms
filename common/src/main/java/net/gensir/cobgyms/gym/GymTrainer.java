@@ -8,109 +8,115 @@ import net.gensir.cobgyms.entity.TrainerVillager;
 import net.gensir.cobgyms.registry.ModEntityRegistry;
 import net.gensir.cobgyms.util.PokemonUtils;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.MutableText;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
 
 import java.util.*;
 
 
 public class GymTrainer {
-    private final MutableText name;
-    private final String[] basePokemon;
-    private Trainer trainer;
-    private int pokemonLevel;
-    private int maxPokemonCount;
-    private final Boolean isLeader;
+    private Text displayName;
+    private Vec3d relativeNpcLoc;
+    private float yaw;
+    private List<String> availablePokemonSpeciesArray;
+    private Map<Integer, Integer> pokemonCountLevelMapper;
+    private boolean isLeader;
+    private List<GymTrainer> defeatRequirements = new ArrayList<>();
+    private Trainer cobblemonTrainer;
+    private String cobblemonTrainerId;
 
-    public GymTrainer(MutableText name, String[] basePokemon, int pokemonLevel, int maxPokemonCount, boolean isLeader){
-        this.name = name;
-        this.basePokemon = basePokemon;
-        this.pokemonLevel = pokemonLevel;
-        this.maxPokemonCount = maxPokemonCount;
+    public GymTrainer(){
+
+    }
+
+    public void setEntityInfo(Text displayName,
+                           Vec3d relativeNpcLoc,
+                           float yaw){
+        this.displayName = displayName;
+        this.relativeNpcLoc = relativeNpcLoc;
+        this.yaw = yaw;
+    }
+
+    public void setTeamInfo(List<String> availablePokemonSpeciesArray, 
+                            Map<Integer, Integer> pokemonCountLevelMapper,
+                            boolean isLeader){
+        this.availablePokemonSpeciesArray = availablePokemonSpeciesArray;
+        this.pokemonCountLevelMapper = pokemonCountLevelMapper;
         this.isLeader = isLeader;
     }
 
-    public String buildTrainer(
-            ServerWorld cobGymDimension,
-            Vec3d npcLoc,
-            float[] rotations){
+    public void addDefeatRequirement(GymTrainer trainer){
+        this.defeatRequirements.add(trainer);
+    }
 
-        String trainerUUID = UUID.randomUUID().toString();
+    public void buildEntity(ServerWorld cobGymDimension, int adjustX){
+        TrainerVillager trainerVillager = new TrainerVillager(ModEntityRegistry.TRAINER_VILLAGER.get(), cobGymDimension);
+        trainerVillager.headYaw = this.yaw;
+        trainerVillager.bodyYaw = this.yaw;
 
-        CobblemonTrainers.INSTANCE.getTrainerRegistry().removeTrainer(trainerUUID);
+        Vec3d adjustedNpcLoc = new Vec3d(this.relativeNpcLoc.getX() + adjustX, this.relativeNpcLoc.getY(), this.relativeNpcLoc.getZ());
+        trainerVillager.setPosition(adjustedNpcLoc);
 
-        this.trainer = new Trainer(CobblemonTrainers.INSTANCE, trainerUUID, DataKeys.UNGROUPED);
-        this.trainer.setCanOnlyBeatOnce(true);
-        this.trainer.setLossCommand("cobgyms whiteout_helper_command %player%");
+        trainerVillager.setTrainer(this.cobblemonTrainer);
 
-        List<String> basePokemonList = Arrays.asList(this.basePokemon);
-        Collections.shuffle(basePokemonList);
+        trainerVillager.setCustomName(this.displayName);
+        trainerVillager.setCustomNameVisible(true);
+        cobGymDimension.spawnEntityAndPassengers(trainerVillager);
+    }
 
-        int pokemonCount = basePokemonList.size();
+    public String getCobblemonTrainerId(){
+        return this.cobblemonTrainerId;
+    }
 
-        if(pokemonLevel < 20){
-            maxPokemonCount = (int) Math.floor(maxPokemonCount * 0.7);
-        }else if (pokemonLevel >= 20 && pokemonLevel < 30){
-            maxPokemonCount = (int) Math.floor(maxPokemonCount * 0.9);
-        }
+    public boolean getIsLeader(){
+        return this.isLeader;
+    }
 
-        if(pokemonCount > maxPokemonCount){
-            pokemonCount = maxPokemonCount;
-        }
+    public void buildCobblemonTrainer(int pokemonLevel){
+        this.cobblemonTrainerId = UUID.randomUUID().toString();
 
-        List<Integer> highLevelIndicies = new ArrayList<>();
-        List<Integer> lowLevelIndicies = new ArrayList<>();
+        CobblemonTrainers.INSTANCE.getTrainerRegistry().removeTrainer(this.cobblemonTrainerId);
 
-        List<Integer> shuffledIndicies = new ArrayList<>();
-        for (int i = 0; i <= pokemonCount-1; i++) {
-            shuffledIndicies.add(i);
-        }
+        this.cobblemonTrainer = new Trainer(CobblemonTrainers.INSTANCE, this.cobblemonTrainerId, DataKeys.UNGROUPED);
+        this.cobblemonTrainer.setCanOnlyBeatOnce(true);
+        this.cobblemonTrainer.setLossCommand("cobgyms whiteout_helper_command %player%");
 
-        Collections.shuffle(shuffledIndicies);
-
-        if (isLeader){
-            for (int i = 0; i < Math.floor(pokemonCount*0.5); i++) {
-                highLevelIndicies.add(shuffledIndicies.get(i));
+        if (this.isLeader){
+            for (GymTrainer defeatRequirementGymTrainer : this.defeatRequirements){
+                String defeatRequirementCobblemonTrainerId = defeatRequirementGymTrainer.getCobblemonTrainerId();
+                if (defeatRequirementCobblemonTrainerId != null){
+                    this.cobblemonTrainer.addDefeatRequirement(defeatRequirementGymTrainer.getCobblemonTrainerId());
+                }
             }
-        } else {
-            lowLevelIndicies.add(shuffledIndicies.get(0));
+        }
+
+        this.addRandomPokemon(pokemonLevel);
+
+        CobblemonTrainers.INSTANCE.getTrainerRegistry().addTrainer(this.cobblemonTrainer);
+    }
+
+    private void addRandomPokemon(int pokemonLevel){
+        List<String> availablePokemonSpeciesArray = this.availablePokemonSpeciesArray;
+        Collections.shuffle(availablePokemonSpeciesArray);
+
+        int pokemonCount = 1;
+        List<Integer> mapperLevels = new ArrayList<>(this.pokemonCountLevelMapper.keySet());
+        Collections.sort(mapperLevels);
+
+        for (int mapperLevel : mapperLevels){
+            if (pokemonLevel <= mapperLevel){
+                pokemonCount = pokemonCountLevelMapper.get(mapperLevel);
+                break;
+            }
         }
 
         for (int i = 0; i < pokemonCount; i++) {
-            String identifier = basePokemonList.get(i);
-            int currentLevel = this.pokemonLevel;
-            if (highLevelIndicies.contains(i)){
-                currentLevel += 1;
-            } else if (lowLevelIndicies.contains(i)){
-                currentLevel -= 1;
-            }
-            Pokemon currentPokemon = PokemonUtils.getEvolvedPokemonFromIdentifier(identifier, currentLevel);
-            if (currentPokemon != null){
-                this.trainer.addPokemon(currentPokemon);
-            }
+            Pokemon poke = PokemonUtils.getEvolvedPokemonFromSpecies(availablePokemonSpeciesArray.get(i), pokemonLevel);
+            this.cobblemonTrainer.addPokemon(poke);
         }
-
-        CobblemonTrainers.INSTANCE.getTrainerRegistry().addTrainer(this.trainer);
-
-        TrainerVillager trainerVillager = new TrainerVillager(ModEntityRegistry.TRAINER_VILLAGER.get(), cobGymDimension);
-        trainerVillager.headYaw = rotations[0];
-        trainerVillager.bodyYaw = rotations[1];
-        trainerVillager.setPosition(npcLoc);
-        trainerVillager.setTrainer(this.trainer);
-        trainerVillager.setCustomName(this.name);
-        trainerVillager.setCustomNameVisible(true);
-        cobGymDimension.spawnEntityAndPassengers(trainerVillager);
-
-        return trainerUUID;
     }
 
-    public void buildLeaderInfo(List<String> defeatRequirements, BlockPos exitCoords){
-        if (!defeatRequirements.isEmpty()){
-            this.trainer.setWinCommand("cobgyms complete_helper_command %player%"+String.format(" %d %d %d %d",this.pokemonLevel, exitCoords.getX(), exitCoords.getY(), exitCoords.getZ()));
-            for (String defeatRequirement : defeatRequirements) {
-                this.trainer.addDefeatRequirement(defeatRequirement);
-            }
-        }
+    public void setWinCommand(String winCommand){
+        this.cobblemonTrainer.setWinCommand(winCommand);
     }
 }

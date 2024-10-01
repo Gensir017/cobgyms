@@ -44,8 +44,8 @@ public class ModLootTableModifiers {
 
         // Gilded chests (Gimmi towers)
         //cobblemon:ruins/gilded_chests/ruins
-        // 75% chance
-        weightedAddGymKey(new Identifier("cobblemon", "ruins/gilded_chests/ruins"), 3, 1);
+        // 100% chance
+        addGymKey(new Identifier("cobblemon", "ruins/gilded_chests/ruins"));
 
         // Jungle temple
         // 75% chance

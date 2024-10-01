@@ -10,8 +10,8 @@ public class TeleportHelper {
                                       double destX,
                                       double destY,
                                       double destZ,
-                                      float pitch,
-                                      float yaw){
+                                      float yaw,
+                                      float pitch){
         int xpLevels = serverPlayer.experienceLevel;
         float xpProgress = serverPlayer.experienceProgress;
         int totalExperience = serverPlayer.totalExperience;
@@ -22,8 +22,8 @@ public class TeleportHelper {
                 destY,
                 destZ,
                 PositionFlag.getFlags(1),
-                pitch,
-                yaw
+                yaw,
+                pitch
         );
 
         serverPlayer.setExperienceLevel(xpLevels);

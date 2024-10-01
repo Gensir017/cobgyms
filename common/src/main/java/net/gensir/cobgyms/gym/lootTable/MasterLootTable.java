@@ -5,13 +5,12 @@ import net.gensir.cobgyms.registry.ModItemRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import static net.gensir.cobgyms.gym.lootTable.GymLootTable.giveItem;
 import static net.minecraft.item.Items.*;
 import static net.minecraft.item.Items.LAPIS_LAZULI;
 
 public class MasterLootTable {
     public static void generateMasterLootTable(int level, ServerPlayerEntity player, int breakVal) {
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.MASTER_SHARD.get(),
                 GymLootTable.randomGen(
@@ -22,7 +21,7 @@ public class MasterLootTable {
                         4,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.ADEPT_SHARD.get(),
                 GymLootTable.randomGen(
@@ -34,7 +33,7 @@ public class MasterLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.ULTRA_BALL,
                 GymLootTable.randomGen(
@@ -45,7 +44,7 @@ public class MasterLootTable {
                         6,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.GREAT_BALL,
                 GymLootTable.randomGen(
@@ -57,7 +56,7 @@ public class MasterLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 DIAMOND,
                 GymLootTable.randomGen(
@@ -68,7 +67,7 @@ public class MasterLootTable {
                         8,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GOLD_INGOT,
                 2* GymLootTable.randomGen(
@@ -80,7 +79,7 @@ public class MasterLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 LAPIS_LAZULI,
                 3* GymLootTable.randomGen(
@@ -93,7 +92,7 @@ public class MasterLootTable {
                         true)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[]{
@@ -117,7 +116,7 @@ public class MasterLootTable {
                         2,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[] {
@@ -138,7 +137,7 @@ public class MasterLootTable {
                         5,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.EXPERIENCE_CANDY_L,
                 GymLootTable.randomGen(
@@ -149,7 +148,7 @@ public class MasterLootTable {
                         3,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.MAX_REVIVE,
                 GymLootTable.randomGen(
@@ -160,7 +159,7 @@ public class MasterLootTable {
                         1,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.HYPER_POTION,
                 GymLootTable.randomGen(
@@ -171,7 +170,7 @@ public class MasterLootTable {
                         4,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.SUPER_POTION,
                 GymLootTable.randomGen(

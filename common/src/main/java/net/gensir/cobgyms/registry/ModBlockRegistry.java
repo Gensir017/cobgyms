@@ -132,29 +132,29 @@ public class ModBlockRegistry {
 
     // Gym entrances
     public static final RegistrySupplier<Block> GYM_ENTRANCE = BLOCKS.register("gym_entrance", () ->
-            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "random"));
+            new GymEntranceBlock(Block.Settings.copy(Blocks.DIAMOND_BLOCK), "random"));
 
     public static final RegistrySupplier<Item> GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance", () ->
-            new BlockItem(GYM_ENTRANCE.get(), new Item.Settings()));
+            new BlockItem(GYM_ENTRANCE.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
 
 
-    public static final RegistrySupplier<Block> WOODLAND_GYM_ENTRANCE = BLOCKS.register("gym_entrance_woodland", () ->
-            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "woodland"));
+    public static final RegistrySupplier<Block> GYM_ENTRANCE_WOODLAND = BLOCKS.register("gym_entrance_woodland", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.DIAMOND_BLOCK), "woodland"));
 
-    public static final RegistrySupplier<Item> WOODLAND_GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_woodland", () ->
-            new BlockItem(WOODLAND_GYM_ENTRANCE.get(), new Item.Settings()));
+    public static final RegistrySupplier<Item> GYM_ENTRANCE_WOODLAND_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_woodland", () ->
+            new BlockItem(GYM_ENTRANCE_WOODLAND.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
 
-    public static final RegistrySupplier<Block> VOLCANIC_GYM_ENTRANCE = BLOCKS.register("gym_entrance_volcanic", () ->
-            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "volcanic"));
+    public static final RegistrySupplier<Block> GYM_ENTRANCE_VOLCANIC = BLOCKS.register("gym_entrance_volcanic", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.DIAMOND_BLOCK), "volcanic"));
 
-    public static final RegistrySupplier<Item> VOLCANIC_GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_volcanic", () ->
-            new BlockItem(VOLCANIC_GYM_ENTRANCE.get(), new Item.Settings()));
+    public static final RegistrySupplier<Item> GYM_ENTRANCE_VOLCANIC_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_volcanic", () ->
+            new BlockItem(GYM_ENTRANCE_VOLCANIC.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
 
-    public static final RegistrySupplier<Block> AQUATIC_GYM_ENTRANCE = BLOCKS.register("gym_entrance_aquatic", () ->
-            new GymEntranceBlock(Block.Settings.copy(Blocks.BEDROCK), "aquatic"));
+    public static final RegistrySupplier<Block> GYM_ENTRANCE_AQUATIC = BLOCKS.register("gym_entrance_aquatic", () ->
+            new GymEntranceBlock(Block.Settings.copy(Blocks.DIAMOND_BLOCK), "aquatic"));
 
-    public static final RegistrySupplier<Item> AQUATIC_GYM_ENTRANCE_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_aquatic", () ->
-            new BlockItem(AQUATIC_GYM_ENTRANCE.get(), new Item.Settings()));
+    public static final RegistrySupplier<Item> GYM_ENTRANCE_AQUATIC_ITEM = ModItemRegistry.ITEMS.register("gym_entrance_aquatic", () ->
+            new BlockItem(GYM_ENTRANCE_AQUATIC.get(), new Item.Settings().arch$tab(ModItemGroup.COBGYMS_TAB)));
 
 
     public static void initialize() {

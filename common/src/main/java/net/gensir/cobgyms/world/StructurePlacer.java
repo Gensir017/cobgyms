@@ -26,10 +26,13 @@ public class StructurePlacer {
                     .setUpdateNeighbors(true);
 
 
-            structureTemplate.get().place(world, pos, pos, structurePlacementData, null, 18);
+            boolean success = structureTemplate.get().place(world, pos, pos, structurePlacementData, null, 18);
+            if (!success){
+                CobGyms.LOGGER.info("ERROR PLACING STRUCTURE");
+            }
 
             structureTemplateManager.unloadTemplate(structureIdentifier);
-            CobGyms.LOGGER.info("Successfully placed structure: " + structureIdentifier);
+            CobGyms.LOGGER.info("Successfully placed structure: " + structureIdentifier + " at "+pos.getX()+","+pos.getY()+","+pos.getZ());
 
         } else {
             CobGyms.LOGGER.info("Failed to load structure: " + structureIdentifier);

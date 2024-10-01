@@ -9,7 +9,7 @@
       "layers": [
         {
           "block": "minecraft:air",
-          "height": 71
+          "height": 62
         },
         {
           "block": "minecraft:dirt",

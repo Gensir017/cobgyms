@@ -5,12 +5,11 @@ import net.gensir.cobgyms.registry.ModItemRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import static net.gensir.cobgyms.gym.lootTable.GymLootTable.giveItem;
 import static net.minecraft.item.Items.*;
 
 public class LegendaryLootTable {
     public static void generateLegendaryLootTable(int level, ServerPlayerEntity player, int breakVal) {
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.LEGENDARY_SHARD.get(),
                 GymLootTable.randomGen(
@@ -21,7 +20,7 @@ public class LegendaryLootTable {
                         4,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.MASTER_SHARD.get(),
                 GymLootTable.randomGen(
@@ -33,7 +32,7 @@ public class LegendaryLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.ULTRA_BALL,
                 GymLootTable.randomGen(
@@ -44,7 +43,7 @@ public class LegendaryLootTable {
                         6,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.MASTER_BALL,
                 GymLootTable.randomGen(
@@ -55,7 +54,7 @@ public class LegendaryLootTable {
                         1,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 DIAMOND,
                 GymLootTable.randomGen(
@@ -67,7 +66,7 @@ public class LegendaryLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 DIAMOND,
                 GymLootTable.randomGen(
@@ -78,7 +77,7 @@ public class LegendaryLootTable {
                         3,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[]{
@@ -97,7 +96,7 @@ public class LegendaryLootTable {
                         2,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[] {
@@ -120,7 +119,7 @@ public class LegendaryLootTable {
                         5,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.EXPERIENCE_CANDY_XL,
                 GymLootTable.randomGen(
@@ -131,7 +130,7 @@ public class LegendaryLootTable {
                         3,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.MAX_REVIVE,
                 GymLootTable.randomGen(
@@ -142,7 +141,7 @@ public class LegendaryLootTable {
                         2,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.MAX_POTION,
                 GymLootTable.randomGen(
@@ -153,7 +152,7 @@ public class LegendaryLootTable {
                         3,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.HYPER_POTION,
                 GymLootTable.randomGen(

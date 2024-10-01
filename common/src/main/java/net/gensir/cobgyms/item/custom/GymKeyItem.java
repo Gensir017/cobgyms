@@ -21,7 +21,7 @@ public class GymKeyItem extends RarityItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (world.isClient) {
-            ClientUtils.openStartGymScreen();
+            ClientUtils.openStartGymScreen(user);
         }
         return super.use(world, user, hand);
     }

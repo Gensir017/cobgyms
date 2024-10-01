@@ -7,6 +7,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.Text;
 import net.minecraft.util.Colors;
@@ -22,15 +23,17 @@ public class GymEntranceScreen extends Screen {
     private final int timesUsed;
     private final BlockPos pos;
     private final String theme;
+    private final PlayerEntity player;
     private int integerValue = 0;
     private TextFieldWidget integerField;
     private boolean tooLowLevel = false;
 
-    public GymEntranceScreen(int timesUsed, BlockPos pos, String theme) {
+    public GymEntranceScreen(int timesUsed, BlockPos pos, String theme, PlayerEntity player) {
         super(Text.translatable("cobgyms.lang.menu.start.title"));
         this.timesUsed = timesUsed;
         this.pos = pos;
         this.theme = theme;
+        this.player = player;
     }
 
     @Override
@@ -44,7 +47,7 @@ public class GymEntranceScreen extends Screen {
         int y = (this.height - fieldHeight - 60) / 2;
         int bigButtonX = (this.width) / 2;
 
-        integerValue = 5;
+        integerValue = CobGyms.autoFillLevelMapper.getOrDefault(player.getUuid(), 5);
 
         integerField = new TextFieldWidget(this.textRenderer, x, y, fieldWidth, fieldHeight, Text.of(""));
         integerField.setMaxLength(3);
@@ -181,5 +184,12 @@ public class GymEntranceScreen extends Screen {
     @Override
     public void tick() {
         integerField.tick();
+    }
+
+    @Override
+    public void close() {
+        int currentValue = integerField.getText().isEmpty() ? -1 : Integer.parseInt(integerField.getText());
+        CobGyms.autoFillLevelMapper.put(this.player.getUuid(),currentValue);
+        this.client.setScreen((Screen)null);
     }
 }

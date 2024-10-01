@@ -14,7 +14,7 @@ import java.util.*;
 public class PokemonUtils {
     static Random random = new Random();
 
-    public static Pokemon getEvolvedPokemonFromIdentifier(String identifier, int pokemonLevel){
+    public static Pokemon getEvolvedPokemonFromSpecies(String speciesString, int pokemonLevel){
 
         PokemonSpecies speciesInstance = PokemonSpecies.INSTANCE;
 
@@ -22,18 +22,18 @@ public class PokemonUtils {
             pokemonLevel = 100;
         }
 
-        if(CobGyms.forceEvolutionMapper.containsKey(identifier)) {
-            List<Map<String, Object>> forceEvolutions = CobGyms.forceEvolutionMapper.get(identifier);
+        if(CobGyms.forceEvolutionMapper.containsKey(speciesString)) {
+            List<Map<String, Object>> forceEvolutions = CobGyms.forceEvolutionMapper.get(speciesString);
             for (Map<String, Object> forceEvolution : forceEvolutions){
                 int forceEvolutionLevel = (int) forceEvolution.get("level");
                 if (pokemonLevel >= forceEvolutionLevel){
-                    identifier = forceEvolution.get("species").toString();
+                    speciesString = forceEvolution.get("species").toString();
                     break;
                 }
             }
         }
 
-        Species species = speciesInstance.getByIdentifier(new Identifier("cobblemon", identifier));
+        Species species = speciesInstance.getByIdentifier(new Identifier("cobblemon", speciesString));
 
 
         if(species != null) {
@@ -74,7 +74,7 @@ public class PokemonUtils {
             return poke;
 
         } else {
-            CobGyms.LOGGER.info("ERROR: SPECIES NULL FOR "+identifier);
+            CobGyms.LOGGER.info("ERROR: SPECIES NULL FOR "+speciesString);
             return null;
         }
     }

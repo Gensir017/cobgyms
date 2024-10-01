@@ -1,7 +1,6 @@
 package net.gensir.cobgyms.block.entity;
 
 import com.google.common.base.Suppliers;
-import dev.architectury.platform.Mod;
 import net.gensir.cobgyms.block.GymEntranceBlock;
 import net.gensir.cobgyms.registry.ModBlockEntityRegistry;
 import net.gensir.cobgyms.registry.ModBlockRegistry;
@@ -21,9 +20,9 @@ import java.util.function.Supplier;
 public class GymEntranceBlockEntity extends BlockEntity {
     public static final Supplier<BlockEntityType<GymEntranceBlockEntity>> TYPE = Suppliers.memoize(() -> BlockEntityType.Builder.create(GymEntranceBlockEntity::new,
             ModBlockRegistry.GYM_ENTRANCE.get(),
-            ModBlockRegistry.WOODLAND_GYM_ENTRANCE.get(),
-            ModBlockRegistry.VOLCANIC_GYM_ENTRANCE.get(),
-            ModBlockRegistry.AQUATIC_GYM_ENTRANCE.get()).build(null));
+            ModBlockRegistry.GYM_ENTRANCE_WOODLAND.get(),
+            ModBlockRegistry.GYM_ENTRANCE_VOLCANIC.get(),
+            ModBlockRegistry.GYM_ENTRANCE_AQUATIC.get()).build(null));
     private final Map<UUID, Integer> playerTimesUsed = new HashMap<>();
     private String theme;
 

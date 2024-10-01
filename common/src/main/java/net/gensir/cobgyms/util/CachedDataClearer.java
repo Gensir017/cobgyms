@@ -12,10 +12,9 @@ import java.util.*;
 
 public class CachedDataClearer {
     public static void clearTrainerCache(Map<String, Object> JSONcontent) {
-        if (JSONcontent.containsKey("trainers")) {
-            String[] trainers = JSONcontent.get("trainers").toString().split(",");
-            for (String trainerUUID : trainers) {
-                CobblemonTrainers.INSTANCE.getTrainerRegistry().removeTrainer(trainerUUID);
+        if (JSONcontent.get("trainers") instanceof List<?> trainers) {
+            for (Object trainerUUID : trainers) {
+                CobblemonTrainers.INSTANCE.getTrainerRegistry().removeTrainer((String) trainerUUID);
             }
         }
     }
@@ -23,7 +22,7 @@ public class CachedDataClearer {
     public static void clearVillagerCache(ServerWorld world, Map<String, Object> JSONcontent) {
         if (JSONcontent.containsKey("adjustX")) {
             double adjustX = (double) JSONcontent.get("adjustX");
-            Box box = new Box(new BlockPos((int) Math.floor(adjustX), -55, 0), new BlockPos((int) Math.floor(adjustX + 48), -10, 48));
+            Box box = new Box(new BlockPos((int) Math.floor(adjustX), 0, 0), new BlockPos((int) Math.floor(adjustX + 48), 48, 48));
 
             List<TrainerVillager> trainerVillagers = world.getEntitiesByClass(TrainerVillager.class, box, EntityPredicates.VALID_ENTITY);
             trainerVillagers.forEach(Entity::discard);

@@ -1,0 +1,33 @@
+{
+  "structures": [
+    {
+      "structure": "cobgyms:gym_entrance_woodland",
+      "weight": 1
+    },
+    {
+      "structure": "cobgyms:gym_entrance_aquatic",
+      "weight": 1
+    },
+    {
+      "structure": "cobgyms:gym_entrance_volcanic",
+      "weight": 1
+    },
+    {
+      "structure": "cobgyms:gym_entrance_volcanic_sand",
+      "weight": 1
+    },
+    {
+      "structure": "cobgyms:gym_entrance_volcanic_redsand",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1872366261,
+
+    "spacing": 20,
+
+    "separation": 15,
+
+    "type": "minecraft:random_spread"
+  }
+}

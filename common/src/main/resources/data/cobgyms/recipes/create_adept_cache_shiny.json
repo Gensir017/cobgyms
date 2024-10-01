@@ -3,21 +3,18 @@
   "category": "misc",
   "pattern": [
     "SSS",
-    "S S",
-    "ICI"
+    "SXS",
+    "SSS"
   ],
   "key": {
     "S": {
       "item": "cobgyms:adept_shard"
     },
-    "I": {
-      "item": "minecraft:gold_ingot"
-    },
-    "C": {
-      "item": "minecraft:chest"
+    "X": {
+      "item": "cobgyms:adept_cache"
     }
   },
   "result": {
-    "item": "cobgyms:empty_adept_cache"
+    "item": "cobgyms:adept_cache_shiny"
   }
 }

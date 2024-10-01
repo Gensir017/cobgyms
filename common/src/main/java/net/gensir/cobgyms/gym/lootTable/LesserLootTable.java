@@ -5,13 +5,12 @@ import net.gensir.cobgyms.registry.ModItemRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import static net.gensir.cobgyms.gym.lootTable.GymLootTable.giveItem;
 import static net.minecraft.item.Items.IRON_INGOT;
 
 public class LesserLootTable {
 
     public static void generateLesserLootTable(int level, ServerPlayerEntity player, int breakVal){
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.LESSER_SHARD.get(),
                 GymLootTable.randomGen(
@@ -22,7 +21,7 @@ public class LesserLootTable {
                         4,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                     CobblemonItems.POKE_BALL,
                     GymLootTable.randomGen(
@@ -34,7 +33,7 @@ public class LesserLootTable {
                             0)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                         IRON_INGOT,
                         2* GymLootTable.randomGen(
@@ -46,7 +45,7 @@ public class LesserLootTable {
                                 0)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[]{
@@ -70,7 +69,7 @@ public class LesserLootTable {
                         1,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                         GymLootTable.randomItem(
                                 new Item[] {
@@ -86,7 +85,7 @@ public class LesserLootTable {
                                 5,
                                 0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                         CobblemonItems.EXPERIENCE_CANDY_S,
                         GymLootTable.randomGen(
@@ -97,7 +96,7 @@ public class LesserLootTable {
                                 3,
                                 0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.REVIVE,
                 GymLootTable.randomGen(
@@ -109,7 +108,7 @@ public class LesserLootTable {
                         0)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                         CobblemonItems.POTION,
                         GymLootTable.randomGen(

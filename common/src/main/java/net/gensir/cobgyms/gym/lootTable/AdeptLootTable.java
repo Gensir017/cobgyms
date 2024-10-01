@@ -5,12 +5,11 @@ import net.gensir.cobgyms.registry.ModItemRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import static net.gensir.cobgyms.gym.lootTable.GymLootTable.giveItem;
 import static net.minecraft.item.Items.*;
 
 public class AdeptLootTable {
     public static void generateAdeptLootTable(int level, ServerPlayerEntity player, int breakVal) {
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.ADEPT_SHARD.get(),
                 GymLootTable.randomGen(
@@ -21,7 +20,7 @@ public class AdeptLootTable {
                         4,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 ModItemRegistry.LESSER_SHARD.get(),
                 GymLootTable.randomGen(
@@ -33,7 +32,7 @@ public class AdeptLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.GREAT_BALL,
                 GymLootTable.randomGen(
@@ -44,7 +43,7 @@ public class AdeptLootTable {
                         6,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.POKE_BALL,
                 GymLootTable.randomGen(
@@ -57,7 +56,7 @@ public class AdeptLootTable {
                         true)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GOLD_INGOT,
                 2* GymLootTable.randomGen(
@@ -68,7 +67,7 @@ public class AdeptLootTable {
                         8,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 IRON_INGOT,
                 2* GymLootTable.randomGen(
@@ -80,7 +79,7 @@ public class AdeptLootTable {
                         0,
                         true)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 LAPIS_LAZULI,
                 3* GymLootTable.randomGen(
@@ -92,7 +91,7 @@ public class AdeptLootTable {
                         0)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[]{
@@ -116,7 +115,7 @@ public class AdeptLootTable {
                         2,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 GymLootTable.randomItem(
                         new Item[] {
@@ -138,7 +137,7 @@ public class AdeptLootTable {
                         5,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.EXPERIENCE_CANDY_M,
                 GymLootTable.randomGen(
@@ -149,7 +148,7 @@ public class AdeptLootTable {
                         3,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.REVIVE,
                 GymLootTable.randomGen(
@@ -161,7 +160,7 @@ public class AdeptLootTable {
                         0)
         );
 
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.SUPER_POTION,
                 GymLootTable.randomGen(
@@ -172,7 +171,7 @@ public class AdeptLootTable {
                         4,
                         0)
         );
-        giveItem(
+        GymLootTable.giveItem(
                 player,
                 CobblemonItems.POTION,
                 GymLootTable.randomGen(

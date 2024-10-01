@@ -8,16 +8,16 @@
   ],
   "key": {
     "S": {
-      "item": "cobgyms:legendary_shard"
+      "item": "cobgyms:master_shard"
     },
     "I": {
-      "item": "minecraft:netherite_ingot"
+      "item": "minecraft:diamond"
     },
     "C": {
       "item": "minecraft:chest"
     }
   },
   "result": {
-    "item": "cobgyms:empty_legendary_cache"
+    "item": "cobgyms:master_cache"
   }
 }

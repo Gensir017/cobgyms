@@ -8,11 +8,11 @@ public class LangUtils {
         String[] splitRegistryKey = registryKey.split("_");
         MutableText cacheName = null;
         if(splitRegistryKey.length == 3){
-            cacheName = Text.translatable("cobgyms.lang.poke_cache",
+            cacheName = Text.translatable("cobgyms.lang.poke_cache_themed",
                     Text.translatable("cobgyms.lang."+splitRegistryKey[0]),
                     Text.translatable("cobgyms.lang."+splitRegistryKey[1]));
         } else if(splitRegistryKey.length == 2){
-            cacheName = Text.translatable("cobgyms.lang.poke_cache_typeless",
+            cacheName = Text.translatable("cobgyms.lang.poke_cache",
                     Text.translatable("cobgyms.lang."+splitRegistryKey[0]));
         }
 
