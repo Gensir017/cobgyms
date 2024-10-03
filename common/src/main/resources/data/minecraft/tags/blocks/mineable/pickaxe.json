@@ -8,6 +8,10 @@
     "cobgyms:gym_entrance",
     "cobgyms:gym_entrance_woodland",
     "cobgyms:gym_entrance_volcanic",
-    "cobgyms:gym_entrance_aquatic"
+    "cobgyms:gym_entrance_aquatic",
+    "cobgyms:lesser_shard_block",
+    "cobgyms:adept_shard_block",
+    "cobgyms:master_shard_block",
+    "cobgyms:legendary_shard_block"
   ]
 }
